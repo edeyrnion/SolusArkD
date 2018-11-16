@@ -2,42 +2,47 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyNavPoints : MonoBehaviour
+namespace David
 {
-	public List<GameObject> navPoints = new List<GameObject>();
-	[SerializeField] float wireSphereRadius;
-	[SerializeField] float offset;
-	[SerializeField] bool visualize;
-
-
-	void Awake()
+	public class EnemyNavPoints : MonoBehaviour
 	{
-		for (int i = 0; i < transform.childCount; i++)
-		{
-			navPoints.Add(transform.GetChild(i).gameObject);
-		}
-	}	
+		[SerializeField] float wireSphereRadius;
+		[SerializeField] float offset;
+		[SerializeField] bool visualize;
 
-	private void OnDrawGizmos()
-	{
-		if (visualize)
+		public List<GameObject> NavPoints = new List<GameObject>();
+
+
+		void Awake()
 		{
-			Gizmos.color = Color.green;
-			for (int i = 0; i < navPoints.Count; i++)
+			for (int i = 0; i < transform.childCount; i++)
 			{
-				Vector3 startPoint = navPoints[i].transform.position + Vector3.up * offset;
-				Vector3 endPoint;
-				if (navPoints[i] == navPoints[navPoints.Count - 1])
+				NavPoints.Add(transform.GetChild(i).gameObject);
+			}
+			visualize = true;
+		}
+
+		void OnDrawGizmos()
+		{
+			if (visualize)
+			{
+				Gizmos.color = Color.green;
+				for (int i = 0; i < NavPoints.Count; i++)
 				{
-					endPoint = navPoints[0].transform.position + Vector3.up * offset;
+					Vector3 startPoint = NavPoints[i].transform.position + Vector3.up * offset;
+					Vector3 endPoint;
+					if (NavPoints[i] == NavPoints[NavPoints.Count - 1])
+					{
+						endPoint = NavPoints[0].transform.position + Vector3.up * offset;
+					}
+					else
+					{
+						endPoint = NavPoints[i + 1].transform.position + Vector3.up * offset;
+					}
+					Gizmos.DrawLine(startPoint, endPoint);
+					Gizmos.DrawWireSphere(startPoint, wireSphereRadius);
 				}
-				else
-				{
-					endPoint = navPoints[i + 1].transform.position + Vector3.up * offset;
-				}
-				Gizmos.DrawLine(startPoint, endPoint);
-				Gizmos.DrawWireSphere(startPoint, wireSphereRadius);
-			}			
+			}
 		}
 	}
 }
