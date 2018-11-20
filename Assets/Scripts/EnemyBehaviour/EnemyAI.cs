@@ -10,29 +10,33 @@ namespace David
 	{
 		[SerializeField] EnemyNavPoints navigation;
 		[SerializeField] GameObject player;
+		[SerializeField] float turnSpeed;
 		[SerializeField] float waitTime;
 		[SerializeField] float searchTimer;
 		[SerializeField] float alertRadius;
 		[SerializeField] float detectionRadius;
 		[SerializeField] bool alerted;
-		EnemyStates enemyStates;
+		[SerializeField] bool spottedPlayer;
 		NavMeshAgent agent;
 		GameObject target;
-		Vector3 lookTarget;
 		List<GameObject> navPoints;
 		public int nextNavPointNumber;
 		Vector3 nextNavPoint;
-		Vector3 currentPathPoint;
+		Vector3 targetDir;
 		float timer;
+		float attackTimer;
+		public bool lookingAtTarget;
+		bool goToLastPoint;
 		bool wait;
 		bool search;
+		bool attack;
+		bool stop;
 		bool visualize;
 		Color color = Color.green;
 
 
 		void Start()
 		{
-			enemyStates = GetComponent<EnemyStates>();
 			agent = GetComponent<NavMeshAgent>();
 			navPoints = navigation.NavPoints;
 			nextNavPoint = navPoints[0].transform.position;
@@ -41,17 +45,35 @@ namespace David
 		}
 
 		void Update()
-		{			
+		{
 			DetectPlayer();
-			if (alerted) { Search(); }
+			if (attack) { Attack(); }
+			if (alerted && !attack) { Search(); }
 			if (wait) { Wait(); }
-			else { Move(nextNavPoint); }
+			else if (!stop)
+			{
+				if (!lookingAtTarget)
+				{
+					NavMeshHit hit;
+					if (agent.Raycast(nextNavPoint, out hit))
+					{
+						NavMeshPath path = new NavMeshPath();
+						agent.CalculatePath(nextNavPoint, path);
+						LookAtNewTarget(path.corners[1]);
+					}
+					else { LookAtNewTarget(nextNavPoint); }
+				}
+				else { Move(nextNavPoint); }
+			}
 		}
 
 		void Move(Vector3 nextNavPoint)
 		{
 			float distance = (transform.position - nextNavPoint).magnitude;
-			if (distance <= 1f) { wait = true; }
+			if (distance <= 1f)
+			{
+				wait = true;
+			}
 			agent.SetDestination(nextNavPoint);
 		}
 
@@ -60,10 +82,12 @@ namespace David
 			timer += Time.deltaTime;
 			if (timer >= waitTime)
 			{
+				lookingAtTarget = false;
 				if (nextNavPointNumber == navPoints.Count - 1) { nextNavPointNumber = 0; }
-				else { nextNavPointNumber++; }
+				else if (!goToLastPoint) { nextNavPointNumber++; }
 				nextNavPoint = navPoints[nextNavPointNumber].transform.position;
 				timer = 0f;
+				goToLastPoint = false;
 				wait = false;
 			}
 		}
@@ -72,39 +96,91 @@ namespace David
 		{
 			if (!search)
 			{
-				lookTarget = target.transform.position;				
+				goToLastPoint = true;
+				agent.isStopped = true;
 				search = true;
-				agent.isStopped = true;		
 				wait = false;
-				IEnumerator coroutine = SearchWait(searchTimer);
-				StartCoroutine(coroutine);
-			}			
-			transform.LookAt(lookTarget);
+			}
+			if (agent.velocity.magnitude <= 0.1f)
+			{
+				if (spottedPlayer)
+				{
+					attack = true;
+					agent.isStopped = false;
+					return;
+				}
+
+				searchTimer += Time.deltaTime;
+				if (searchTimer >= waitTime)
+				{
+					searchTimer = 0f;
+					if (target == null)
+					{
+						alerted = false;
+						search = false;
+						wait = true;
+						agent.isStopped = false;
+					}
+					else
+					{
+						nextNavPoint = target.transform.position + Random.insideUnitCircle.ToVector3() * 5;
+						agent.isStopped = false;
+					}
+				}
+			}
 		}
 
-		IEnumerator SearchWait(float searchTimer)
-		{			
-			yield return new WaitForSeconds(searchTimer);			
-			if(target == null)
+		void Attack()
+		{
+			nextNavPoint = target.transform.position;
+			float distance = (transform.position - nextNavPoint).magnitude;
+			if (distance <= 2f)
 			{
-				alerted = false;
-				search = false;
-				wait = true;
+				stop = true;
+				agent.isStopped = true;
+				attackTimer += Time.deltaTime;
+				if (attackTimer >= 2f)
+				{
+					attackTimer = 0f;
+					print("Attack!");
+				}
+			}
+			else if (distance >= 2f)
+			{
+				stop = false;
 				agent.isStopped = false;
 			}
-			else
-			{				
-				currentPathPoint = nextNavPoint;
-				nextNavPoint = target.transform.position + Random.insideUnitCircle.ToVector3() * 3;
+			if (distance >= alertRadius * 1.2f)
+			{
+				attack = false;
+				spottedPlayer = false;
 				agent.isStopped = false;
-				search = false;
+				stop = false;
 			}
+			
+		}
+
+		void LookAtNewTarget(Vector3 lookTarget)
+		{
+			targetDir = lookTarget - transform.position;
+			Debug.DrawRay(transform.position, targetDir, Color.red);
+			float step = turnSpeed * Time.deltaTime;
+			Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, step, 0.0f);
+			transform.rotation = Quaternion.LookRotation(newDir);
+			if (Quaternion.Angle(transform.rotation, Quaternion.LookRotation(targetDir)) <= 0.1f) { lookingAtTarget = true; }
 		}
 
 		void DetectPlayer()
-		{			
+		{
 			Vector3 myPos = transform.position;
 			Vector3 playerPos = player.transform.position;
+			float distanceToPlayer = (myPos - playerPos).magnitude;
+			if (distanceToPlayer > alertRadius)
+			{
+				target = null;
+				color = Color.green;
+				return;
+			}
 			Ray ray = new Ray(myPos, playerPos - myPos);
 			RaycastHit hit;
 			if (Physics.Raycast(ray, out hit, alertRadius))
@@ -114,18 +190,13 @@ namespace David
 				{
 					color = Color.yellow;
 					alerted = true;
-					if (Physics.Raycast(ray, out hit, detectionRadius)) { color = Color.red; }					
+					if (Physics.Raycast(ray, out hit, detectionRadius))
+					{
+						color = Color.red;
+						spottedPlayer = true;
+					}
 				}
-				else
-				{
-					target = null;
-					color = Color.green;					
-				}
-			}
-			else
-			{
-				target = null;				
-				color = Color.green;				
+				else { color = Color.green; }
 			}
 		}
 

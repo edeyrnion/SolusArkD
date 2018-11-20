@@ -443,7 +443,7 @@ GameObject:
   - component: {fileID: 1131189004}
   m_Layer: 0
   m_Name: Obstacle1
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
@@ -754,7 +754,6 @@ GameObject:
   - component: {fileID: 1669588507}
   - component: {fileID: 1669588508}
   - component: {fileID: 1669588509}
-  - component: {fileID: 1669588511}
   - component: {fileID: 1669588510}
   m_Layer: 0
   m_Name: Enemy
@@ -824,23 +823,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   navigation: {fileID: 1778814038}
   player: {fileID: 1202385535}
+  turnSpeed: 3
   waitTime: 2
   searchTimer: 2
   alertRadius: 15
   detectionRadius: 5
   alerted: 0
+  spottedPlayer: 0
   nextNavPointNumber: 0
---- !u!114 &1669588511
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1669588506}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd347f92b7e3fbc48a8ba58f36e29ee0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  lookingAtTarget: 0
 --- !u!1 &1692997080
 GameObject:
   m_ObjectHideFlags: 0
@@ -959,7 +950,7 @@ GameObject:
   - component: {fileID: 1857870723}
   m_Layer: 0
   m_Name: Obstacle2
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295

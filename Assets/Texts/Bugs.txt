@@ -1,0 +1,4 @@
+EnemyAI:
+		
+		-There are some edge-cases where the enemyNavMeshAgent doesn't get the right target or needs way to long, to get his target rotation.
+		-If the player is spotted, the enemy starts moving even though the rotation isn't finished.
