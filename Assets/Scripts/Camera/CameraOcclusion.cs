@@ -6,8 +6,10 @@ namespace Matthias
     {
         private Camera camera;
         private float ncpDistance, ncpHalfHight, ncpHalfWide;
-        //private float ncpHalfDiagonal;
+        private float ncpHalfDiagonal;
         private Vector3 halfExtends;
+
+        private readonly float distanceAdjustment = 0.001f;
 
         public CameraOcclusion(Camera camera)
         {
@@ -20,7 +22,7 @@ namespace Matthias
             ncpDistance = camera.nearClipPlane;
             ncpHalfHight = Mathf.Tan((camera.fieldOfView / 2) * Mathf.Deg2Rad) * camera.nearClipPlane;
             ncpHalfWide = ncpHalfHight * camera.aspect;
-            //ncpHalfDiagonal = Mathf.Sqrt(Mathf.Pow(ncpHalfHight, 2f) + Mathf.Pow(ncpHalfWide, 2f));
+            ncpHalfDiagonal = Mathf.Sqrt(Mathf.Pow(ncpHalfHight, 2f) + Mathf.Pow(ncpHalfWide, 2f));
             halfExtends = new Vector3(ncpHalfWide, ncpHalfHight, 0f);
         }
 
@@ -53,6 +55,30 @@ namespace Matthias
             }
 
             return renderers;
+        }
+
+        public bool IsNearCollision(Vector3 from, out Vector3 offset, int layerMask = ~0)
+        {
+            offset = Vector3.zero;
+            bool isNearCollision = false;
+            float distance = ncpHalfDiagonal + distanceAdjustment;
+
+            for (int i = 0; i < 360; i = i + 45)
+            {
+                var direction = Quaternion.Euler(0f, i, 0f) * Vector3.forward;
+                Ray ray = new Ray(from, direction);
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit, distance, layerMask))
+                {
+                    offset += direction.normalized * (hit.distance - distance);
+                    isNearCollision = true;
+
+                    // DEBUG:
+                    Debug.DrawLine(from, from + direction * distance, Color.red);
+                }
+            }
+
+            return isNearCollision;
         }
     }
 }

@@ -15,8 +15,8 @@ namespace Matthias
         public void Fade(Renderer[] renderes)
         {
             // Get all former obstacles.
-            var onlyInFadeOut = fadeOut.Except(renderes);
-            var onlyInFadeIn = fadeIn.Except(renderes);
+            var onlyInFadeOut = fadeOut.Except(renderes).ToArray();
+            var onlyInFadeIn = fadeIn.Except(renderes).ToArray();
 
             fadeOut.Clear();
             fadeIn.Clear();
@@ -32,11 +32,14 @@ namespace Matthias
             for (int i = 0; i < renderes.Length; i++)
             {
                 var color = renderes[i].material.color;
+                var r = color.r;
+                var g = color.g;
+                var b = color.b;
                 if (color.a >= 0.3f)
                 {
                     var a = color.a - Time.deltaTime * 2;
                     a = Mathf.Clamp(a, 0.3f, 1f);
-                    renderes[i].material.color = new Color(1f, 1f, 1f, a);
+                    renderes[i].material.color = new Color(r, g, b, a);
                 }
             }
 
@@ -44,11 +47,14 @@ namespace Matthias
             for (int i = 0; i < fadeIn.Count; i++)
             {
                 var color = fadeIn[i].material.color;
+                var r = color.r;
+                var g = color.g;
+                var b = color.b;
                 if (color.a < 1f)
                 {
                     var a = color.a + Time.deltaTime * 2;
                     a = Mathf.Clamp(a, 0.3f, 1f);
-                    fadeIn[i].material.color = new Color(1f, 1f, 1f, a);
+                    fadeIn[i].material.color = new Color(r, g, b, a);
                 }
                 else
                 {
