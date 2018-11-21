@@ -8,7 +8,7 @@ namespace David
 	{
 		[SerializeField] float wireSphereRadius;
 		[SerializeField] float offset;
-		[SerializeField] bool visualize;
+		[SerializeField] bool visualize = true;
 
 		public List<GameObject> NavPoints = new List<GameObject>();
 
@@ -18,8 +18,7 @@ namespace David
 			for (int i = 0; i < transform.childCount; i++)
 			{
 				NavPoints.Add(transform.GetChild(i).gameObject);
-			}
-			visualize = true;
+			}			
 		}
 
 		void OnDrawGizmos()

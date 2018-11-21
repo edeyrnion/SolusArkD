@@ -1,51 +1,33 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.AI;
+﻿using UnityEngine;
 using UnityEditor;
 
 namespace David
 {
-	public class EnemyStates : MonoBehaviour
+	public class DetectPlayer : MonoBehaviour
 	{
-		[SerializeField] EnemyNavPoints navigation;
 		[SerializeField] GameObject player;
-		[SerializeField] float alertRadius;
 		[SerializeField] float detectionRadius;
-		[SerializeField] bool visualize;
-		[SerializeField] bool alerted;
-		[SerializeField] bool spottedPlayer;
-		NavMeshAgent agent;
-		List<GameObject> navPoints;
-		GameObject target;
-		public int nextNavPointNumber;
-		Color color = Color.green;
-		Vector3 nextNavPoint;
-
+		[SerializeField] bool visualize = true;
+		public GameObject Target;
+		public float alertRadius;
+		public bool spottedPlayer;
+		EnemyAI enemyAI;
+		Color color;
+		
 
 		private void Start()
 		{
-			agent = GetComponent<NavMeshAgent>();
-			navPoints = navigation.NavPoints;
-			nextNavPoint = navPoints[0].transform.position;
-			nextNavPointNumber = 0;
-			visualize = true;
+			enemyAI = GetComponent<EnemyAI>();
 		}
 
-		private void Update()
-		{
-			DetectPlayer();
-			if (alerted) { Search(); }
-		}
-
-		void DetectPlayer()
+		public void Execute()
 		{
 			Vector3 myPos = transform.position;
 			Vector3 playerPos = player.transform.position;
 			float distanceToPlayer = (myPos - playerPos).magnitude;
 			if (distanceToPlayer > alertRadius)
 			{
-				target = null;
+				Target = null;
 				color = Color.green;
 				return;
 			}
@@ -53,28 +35,19 @@ namespace David
 			RaycastHit hit;
 			if (Physics.Raycast(ray, out hit, alertRadius))
 			{
-				target = hit.transform.gameObject;
-				if (target.CompareTag("Player"))
+				Target = hit.transform.gameObject;
+				if (Target.CompareTag("Player"))
 				{
 					color = Color.yellow;
-					alerted = true;
+					enemyAI.alerted = true;
 					if (Physics.Raycast(ray, out hit, detectionRadius))
 					{
 						color = Color.red;
 						spottedPlayer = true;
 					}
 				}
-				else
-				{
-					target = null;
-					color = Color.green;
-				}
-			}			
-		}
-
-		void Search()
-		{
-
+				else { color = Color.green; }
+			}
 		}
 
 		private void OnDrawGizmos()
