@@ -847,6 +847,7 @@ GameObject:
   - component: {fileID: 1669588511}
   - component: {fileID: 1669588510}
   - component: {fileID: 1669588512}
+  - component: {fileID: 1669588513}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -931,13 +932,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19639f2a51f6e6848a278964ac677f3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alertRadius: 15
+  AlertRadius: 15
   detectionRadius: 5
   Player: {fileID: 1202385535}
   CurrentState: 0
   Visualize: 1
   Detected: 0
-  Attacking: 0
+  Following: 0
 --- !u!114 &1669588512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -951,9 +952,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turnSpeed: 5
   waitTime: 2
-  investigationOffset: 5
+  investigationOffset: 7
   LookingAtTarget: 0
-  Investigating: 0
+  Investigated: 0
+--- !u!114 &1669588513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1669588506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72e01a6d90fee1145ac7fe9f8ea43345, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turnSpeed: 7
+  stoppingDistance: 2
+  waitTime: 6
+  LookingAtTarget: 0
 --- !u!1 &1692997080
 GameObject:
   m_ObjectHideFlags: 0

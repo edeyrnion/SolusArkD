@@ -6,15 +6,16 @@ namespace David
 {
 	public class EnemyManager : MonoBehaviour
 	{
-		[SerializeField] float alertRadius;
+		public float AlertRadius;
 		[SerializeField] float detectionRadius;
 		public GameObject Player;
 		public State CurrentState = State.Patroling;
 		public bool Visualize = true;
 		public bool Detected;
-		public bool Attacking;
+		public bool Following;
 		EnemyMove enemyMove;
 		EnemyInvestigate enemyInvestigate;
+		EnemyFollow enemyFollow;
 		NavMeshAgent agent;
 		Color color = Color.green;
 
@@ -23,6 +24,7 @@ namespace David
 		{
 			enemyMove = GetComponent<EnemyMove>();
 			enemyInvestigate = GetComponent<EnemyInvestigate>();
+			enemyFollow = GetComponent<EnemyFollow>();
 			agent = GetComponent<NavMeshAgent>();
 		}
 
@@ -37,7 +39,7 @@ namespace David
 			Vector3 myPos = transform.position;
 			Vector3 playerPos = Player.transform.position;
 			float distanceToPlayer = (myPos - playerPos).magnitude;
-			if (distanceToPlayer > alertRadius)
+			if (distanceToPlayer > AlertRadius)
 			{
 				color = Color.green;
 				Detected = false;
@@ -46,7 +48,7 @@ namespace David
 			NavMeshHit hit;
 			if (agent.Raycast(Player.transform.position, out hit)) { Detected = false; return; }
 			color = Color.yellow;
-			if (CurrentState != State.Investigating && !Attacking) { ChangeState(State.Investigating); }
+			if (CurrentState != State.Investigating && !Following) { ChangeState(State.Investigating); }
 			Detected = true;
 		}
 
@@ -55,19 +57,15 @@ namespace David
 			switch (state)
 			{
 				case State.Patroling:
-					agent.SetDestination(enemyMove.CurrentNavPoint);
-					enemyMove.LookingAtTarget = false;
-					enemyMove.IsMoving = false;
-					agent.isStopped = false;
+					enemyMove.OnStateEnter();
 					break;
 				case State.Investigating:
-					enemyInvestigate.LookingAtTarget = false;
-					enemyInvestigate.Investigating = false;
-					agent.isStopped = true;
+					enemyInvestigate.OnStateEnter();
+					break;
+				case State.Following:
+					enemyFollow.OnStateEnter();
 					break;
 				case State.Attacking:
-					agent.isStopped = true;
-					print("Attacking");
 					break;
 				default:
 					break;
@@ -82,13 +80,13 @@ namespace David
 				Gizmos.color = color;
 				Gizmos.DrawLine(transform.position, Player.transform.position);
 				Handles.color = Color.yellow;
-				Handles.DrawWireDisc(transform.position, Vector3.up, alertRadius);
+				Handles.DrawWireDisc(transform.position, Vector3.up, AlertRadius);
 				Handles.color = Color.red;
 				Handles.DrawWireDisc(transform.position, Vector3.up, detectionRadius);
 			}
 		}
 	}
 
-	public enum State { Patroling, Investigating, Attacking }
+	public enum State { Patroling, Investigating, Following, Attacking }
 
 }

@@ -20,6 +20,12 @@ namespace David
 		public bool LookingAtTarget;
 
 
+		public void OnStateEnter()
+		{
+			LookingAtTarget = false;
+			IsMoving = false;
+		}
+
 		private void Start()
 		{
 			manager = GetComponent<EnemyManager>();
@@ -68,6 +74,7 @@ namespace David
 				LookingAtTarget = true;
 				IsMoving = true;
 				agent.SetDestination(CurrentNavPoint);
+				if (agent.isStopped) { agent.isStopped = false; }
 			}
 		}
 
