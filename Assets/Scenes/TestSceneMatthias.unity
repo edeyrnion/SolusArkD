@@ -282,7 +282,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4118881624628378, guid: b69600de680c40c428a0606d76d8442b, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4118881624628378, guid: b69600de680c40c428a0606d76d8442b, type: 2}
       propertyPath: m_LocalPosition.z
@@ -339,7 +339,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4502265701720742, guid: 01cb95c30788c014897a35df29e6574c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4502265701720742, guid: 01cb95c30788c014897a35df29e6574c, type: 2}
       propertyPath: m_LocalPosition.z
@@ -473,7 +473,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1386492401}
-  targetOffset: {x: 0, y: 0, z: 0}
+  targetOffset: {x: 0, y: 2, z: 0}
   collisionLayer:
     serializedVersion: 2
     m_Bits: 1024
@@ -976,7 +976,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2068910503}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.88, y: 0.4, z: 10.57}
+  m_LocalPosition: {x: 10.88, y: -0.5, z: 10.57}
   m_LocalScale: {x: 10, y: 1, z: 10}
   m_Children: []
   m_Father: {fileID: 0}

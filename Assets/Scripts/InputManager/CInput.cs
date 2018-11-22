@@ -73,5 +73,6 @@ namespace Matthias
             bool value = Input.GetButtonUp(_actions[player - 1][(int)buttonName]);
             return value;
         }
+
     }
 }
