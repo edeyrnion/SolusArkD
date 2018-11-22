@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,16 +7,19 @@ namespace David
 	public class EnemyFollow : MonoBehaviour
 	{
 		[SerializeField] float turnSpeed;
-		[SerializeField] float stoppingDistance;
 		[SerializeField] float waitTime;
 		EnemyManager manager;
 		NavMeshAgent agent;
 		Vector3 targetPos;
+		float distance;
 		public bool LookingAtTarget;
 		bool wait;
+		bool breakOutOfCoroutine;
+		IEnumerator coroutine;
 
 		public void OnStateEnter()
 		{
+			print(manager.CurrentState);
 			agent.isStopped = true;
 			LookingAtTarget = false;
 			wait = false;
@@ -33,6 +35,17 @@ namespace David
 		{
 			if (manager.CurrentState == State.Following)
 			{
+				targetPos = manager.Player.transform.position;
+				distance = (transform.position - targetPos).magnitude;
+				NavMeshHit hit;
+				bool hidden = !agent.Raycast(targetPos, out hit);
+				if (wait && !breakOutOfCoroutine && distance <= manager.AlertRadius && hidden)
+				{
+					print("break");
+					breakOutOfCoroutine = true;
+					LookingAtTarget = false;
+					wait = false;
+				}
 				if (!LookingAtTarget) { LookAtTarget(); }
 				else if (!wait) { Follow(); }
 			}
@@ -40,7 +53,6 @@ namespace David
 
 		void LookAtTarget()
 		{
-			targetPos = manager.Player.transform.position;
 			NavMeshPath path = new NavMeshPath();
 			agent.CalculatePath(targetPos, path);
 			Vector3 targetDir = path.corners[1] - transform.position;
@@ -59,28 +71,24 @@ namespace David
 		{
 			targetPos = manager.Player.transform.position;
 			agent.SetDestination(targetPos);
-			float distance = (transform.position - targetPos).magnitude;
-			if (distance <= stoppingDistance) { manager.ChangeState(State.Attacking); }
+			if (distance <= manager.AttackRadius) { manager.ChangeState(State.Attacking); }
 			else if (distance >= manager.AlertRadius * 1.5f)
 			{
 				agent.isStopped = true;
 				wait = true;
-				IEnumerator coroutine = Wait(waitTime);
+				coroutine = Wait(waitTime);
 				StartCoroutine(coroutine);
 			}
 		}
 
 		IEnumerator Wait(float waitTime)
 		{
+			if (breakOutOfCoroutine) { breakOutOfCoroutine = false; yield break; }
 			yield return new WaitForSeconds(waitTime);
-			if (!manager.Detected)
-			{
-				manager.Following = false;
-				manager.ChangeState(State.Patroling);
-			}
+			if (!manager.Detected) { manager.ChangeState(State.Patroling); }
 			else
 			{
-				agent.isStopped = false;
+				LookingAtTarget = false;
 				wait = false;
 			}
 		}

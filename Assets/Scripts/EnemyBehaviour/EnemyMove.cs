@@ -22,6 +22,7 @@ namespace David
 
 		public void OnStateEnter()
 		{
+			print(manager.CurrentState);
 			LookingAtTarget = false;
 			IsMoving = false;
 		}
@@ -38,6 +39,7 @@ namespace David
 		{
 			if (manager.CurrentState == State.Patroling)
 			{
+				if (manager.Detected) { CheckIfPlayerIsDetected(); }
 				if (IsMoving)
 				{
 					float distance = (transform.position - CurrentNavPoint).magnitude;
@@ -50,6 +52,12 @@ namespace David
 				}
 				if (!LookingAtTarget) { LookAtTarget(); }
 			}
+		}
+
+		private void CheckIfPlayerIsDetected()
+		{
+			manager.Color = Color.yellow;
+			manager.ChangeState(State.Investigating);
 		}
 
 		void GetNextNavPoint()

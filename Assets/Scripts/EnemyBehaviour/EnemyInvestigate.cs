@@ -16,10 +16,12 @@ namespace David
 		Vector3 poitOfInvestigation;
 		public bool LookingAtTarget;
 		public bool Investigated;
+		bool breakOutOfCoroutine;
 
 
 		public void OnStateEnter()
 		{
+			print(manager.CurrentState);
 			agent.velocity = Vector3.zero;
 			agent.isStopped = true;
 			LookingAtTarget = false;
@@ -36,17 +38,21 @@ namespace David
 		{
 			if (manager.CurrentState == State.Investigating)
 			{
+				targetPos = manager.Player.transform.position;
+				float distanceToPlayer = (transform.position - targetPos).magnitude;
+				if (distanceToPlayer <= manager.DetectionRadius)
+				{
+					breakOutOfCoroutine = true;
+					manager.ChangeState(State.Following);
+				}
 				if (!LookingAtTarget) { LookAtTarget(); }
+				float distance = (transform.position - poitOfInvestigation).magnitude;
+				if (distance <= manager.DetectionRadius) { manager.ChangeState(State.Following); return; }
 				if (Investigated)
 				{
-					float distance = (transform.position - poitOfInvestigation).magnitude;
 					if (distance <= 0.1f)
 					{
-						if (manager.Detected)
-						{
-							manager.Following = true;
-							manager.ChangeState(State.Following);
-						}
+						if (manager.Detected) { manager.ChangeState(State.Following); }
 						else
 						{
 							coroutine = Wait(waitTime * 1.5f);
@@ -85,6 +91,7 @@ namespace David
 
 		IEnumerator Wait(float waitTime)
 		{
+			if (breakOutOfCoroutine) { breakOutOfCoroutine = false; yield break; }
 			yield return new WaitForSeconds(waitTime);
 			if (!Investigated) { Investigate(); }
 			else { manager.ChangeState(State.Patroling); }
