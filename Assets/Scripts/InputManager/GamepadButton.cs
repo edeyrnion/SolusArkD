@@ -1,25 +1,25 @@
 ﻿namespace Matthias
 {
     /// <summary>Available gamepad buttons.</summary>
-    public enum GamepadButtons
+    public enum GamepadButton
     {
-        DPad_Up,
-        DPad_Down,
-        DPad_Left,
-        DPad_Right,
+        Action_Left,
+        Action_Bottom,
+        Action_Right,
+        Action_Top,
         LBumper,
         RBumper,
         LTrigger,
         RTrigger,
-        LStick,
-        RStick,
-        Action_Top,
-        Action_Bottom,
-        Action_Left,
-        Action_Right,
         Start,
         Select,
+        LStick,
+        RStick,
         Guide,
         Touchpad,
+        DPad_Left,
+        DPad_Down,
+        DPad_Right,
+        DPad_Up,
     }
 }
