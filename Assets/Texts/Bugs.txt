@@ -1,7 +1,3 @@
 EnemyAI:
 		
-		- Sometimes if the enemy returns patroling after investigating but not finding the player
-		  and has not yet reached the next navpoint, there will be a bug, if the player 
-		  comes into alert range again
-
-		- Under unknown edge-case conditions, there will be an Index Out Of Range Error
+		- edge-case bug: enemy won't return patrolling

@@ -11,12 +11,12 @@ namespace David
 		[SerializeField] float investigationOffset;
 		EnemyManager manager;
 		NavMeshAgent agent;
-		IEnumerator coroutine;
 		Vector3 targetPos;
 		Vector3 poitOfInvestigation;
 		public bool LookingAtTarget;
 		public bool Investigated;
-		bool breakOutOfCoroutine;
+		float distanceToPlayer;
+		bool secondCycle;
 
 
 		public void OnStateEnter()
@@ -26,6 +26,7 @@ namespace David
 			agent.isStopped = true;
 			LookingAtTarget = false;
 			Investigated = false;
+			secondCycle = false;
 		}
 
 		void Start()
@@ -38,25 +39,22 @@ namespace David
 		{
 			if (manager.CurrentState == State.Investigating)
 			{
-				targetPos = manager.Player.transform.position;
-				float distanceToPlayer = (transform.position - targetPos).magnitude;
-				if (distanceToPlayer <= manager.DetectionRadius)
-				{
-					breakOutOfCoroutine = true;
-					manager.ChangeState(State.Following);
-				}
+				Vector3 playerPos = manager.Player.transform.position;
+				distanceToPlayer = (transform.position - playerPos).magnitude;
 				if (!LookingAtTarget) { LookAtTarget(); }
-				float distance = (transform.position - poitOfInvestigation).magnitude;
-				if (distance <= manager.DetectionRadius) { manager.ChangeState(State.Following); return; }
+				if (distanceToPlayer <= manager.DetectionRadius) { manager.ChangeState(State.Following); return; }
 				if (Investigated)
 				{
+					float distance = (transform.position - poitOfInvestigation).magnitude;
 					if (distance <= 0.1f)
 					{
 						if (manager.Detected) { manager.ChangeState(State.Following); }
-						else
+						else if (!secondCycle)
 						{
-							coroutine = Wait(waitTime * 1.5f);
+							string test = "second";
+							IEnumerator coroutine = Wait(waitTime * 1.5f, test);
 							StartCoroutine(coroutine);
+							secondCycle = true;
 						}
 					}
 				}
@@ -68,15 +66,20 @@ namespace David
 			targetPos = manager.Player.transform.position;
 			NavMeshPath path = new NavMeshPath();
 			agent.CalculatePath(targetPos, path);
+			if (path.corners.Length == 0)
+			{
+				Debug.LogError("Path not correcly calculated!");
+				return;
+			}
 			Vector3 targetDir = path.corners[1] - transform.position;
-			Debug.DrawRay(transform.position, targetDir, Color.red);
 			float step = turnSpeed * Time.deltaTime;
 			Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, step, 0.0f);
 			transform.rotation = Quaternion.LookRotation(newDir);
-			if (Quaternion.Angle(transform.rotation, Quaternion.LookRotation(targetDir)) <= 0.1f)
+			if (Quaternion.Angle(transform.rotation, Quaternion.LookRotation(targetDir)) <= 0.3f)
 			{
 				LookingAtTarget = true;
-				coroutine = Wait(waitTime);
+				string test = "first";
+				IEnumerator coroutine = Wait(waitTime, test);
 				StartCoroutine(coroutine);
 			}
 		}
@@ -89,12 +92,17 @@ namespace David
 			Investigated = true;
 		}
 
-		IEnumerator Wait(float waitTime)
+		IEnumerator Wait(float waitTime, string test)
 		{
-			if (breakOutOfCoroutine) { breakOutOfCoroutine = false; yield break; }
+			print(test);
+			if (distanceToPlayer <= manager.DetectionRadius)
+			{
+				manager.ChangeState(State.Following);
+				yield break;
+			}
 			yield return new WaitForSeconds(waitTime);
 			if (!Investigated) { Investigate(); }
-			else { manager.ChangeState(State.Patroling); }
+			else if (manager.CurrentState == State.Investigating) manager.ChangeState(State.Patroling);
 		}
 	}
 }

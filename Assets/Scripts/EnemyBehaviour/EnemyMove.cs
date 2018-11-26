@@ -19,7 +19,6 @@ namespace David
 		public bool IsMoving;
 		public bool LookingAtTarget;
 
-
 		public void OnStateEnter()
 		{
 			print(manager.CurrentState);
@@ -56,8 +55,12 @@ namespace David
 
 		private void CheckIfPlayerIsDetected()
 		{
-			manager.Color = Color.yellow;
-			manager.ChangeState(State.Investigating);
+			if (manager.OtherEnemyIsAlerted) { manager.ChangeState(State.Following); }
+			else
+			{
+				manager.Color = Color.yellow;
+				manager.ChangeState(State.Investigating);
+			}
 		}
 
 		void GetNextNavPoint()
@@ -72,12 +75,17 @@ namespace David
 		{
 			NavMeshPath path = new NavMeshPath();
 			agent.CalculatePath(CurrentNavPoint, path);
+			if (path.corners.Length == 0)
+			{
+				Debug.LogError("Path not correcly calculated!");
+				return;
+			}
 			Vector3 targetDir = path.corners[1] - transform.position;
 			Debug.DrawRay(transform.position, targetDir, Color.red);
 			float step = turnSpeed * Time.deltaTime;
 			Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, step, 0.0f);
 			transform.rotation = Quaternion.LookRotation(newDir);
-			if (Quaternion.Angle(transform.rotation, Quaternion.LookRotation(targetDir)) <= 0.1f)
+			if (Quaternion.Angle(transform.rotation, Quaternion.LookRotation(targetDir)) <= 0.3f)
 			{
 				LookingAtTarget = true;
 				IsMoving = true;

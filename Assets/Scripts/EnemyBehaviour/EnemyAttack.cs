@@ -5,13 +5,13 @@ using UnityEngine.AI;
 namespace David
 {
 	public class EnemyAttack : MonoBehaviour
-	{
-		[SerializeField] int damage;		
-		[SerializeField] float attackSpeed;
+	{	
 		[SerializeField] float waitTime;
 		EnemyManager manager;
 		NavMeshAgent agent;
 		Vector3 targetPos;
+		int damage;		
+		float attackWaitTime;
 		float timer;
 		bool wait;
 
@@ -20,7 +20,7 @@ namespace David
 		{
 			print(manager.CurrentState);
 			agent.isStopped = true;
-			timer = attackSpeed;
+			timer = attackWaitTime;
 			wait = false;
 		}
 
@@ -28,6 +28,8 @@ namespace David
 		{
 			manager = GetComponent<EnemyManager>();
 			agent = GetComponent<NavMeshAgent>();
+			damage = manager.Damage;			
+			attackWaitTime = manager.AttackWaitTime;
 		}
 
 		void Update()
@@ -51,7 +53,7 @@ namespace David
 			agent.velocity = Vector3.zero;
 			agent.isStopped = true;
 			timer += Time.deltaTime;
-			if (timer >= attackSpeed)
+			if (timer >= attackWaitTime)
 			{
 				timer = 0f;
 				manager.DealDamage(damage);
