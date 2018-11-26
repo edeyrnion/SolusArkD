@@ -1,7 +1,12 @@
 ﻿using System.Collections.Generic;
 
-public partial class InputProfile : IInputProfile
+public partial class InputProfile
 {
+    private void PS4_DualshockInit()
+    {
+        methods.Add("PS4 Dualshock", PS4_Dualshock);  // methods.Add("NAME_OF_DEVICE", NAME_OF_METHOD);
+    }
+
     public void PS4_Dualshock()
     {
         name = "PS4 Dualshock";

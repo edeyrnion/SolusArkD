@@ -12,6 +12,7 @@ namespace Matthias
         static CInput()
         {
             btnActions = new Dictionary<int, int>();
+            axisActions = new Dictionary<int, int>();
 
             AddAction(Button.Jump, GamepadButton.Action_Bottom, btnActions);
             AddAction(Axis.MoveHorizontal, GamepadAxis.LStick_X, axisActions);
@@ -66,5 +67,31 @@ namespace Matthias
             return value;
         }
 
+        /// <summary>Returns true while the key identified by key is held down.</summary>
+        /// <param name="key">The name of the key.</param>
+        /// <returns>True when an key has been pressed and not released.</returns>
+        public static bool GetKey(KeyCode key)
+        {
+            bool value = Input.GetKey(key);
+            return value;
+        }
+
+        /// <summary>Returns true during the frame the user pressed down the key identified by key.</summary>
+        /// <param name="key">The name of the key.</param>
+        /// <returns>True when an key has been pressed.</returns>
+        public static bool GetKeyDown(KeyCode key)
+        {
+            bool value = Input.GetKeyDown(key);
+            return value;
+        }
+
+        /// <summary>Returns true the first frame the user releases the key identified by key.</summary>
+        /// <param name="key">The name of the key.</param>
+        /// <returns>True when an key has been released.</returns>
+        public static bool GetKeyUp(KeyCode key)
+        {
+            bool value = Input.GetKeyUp(key);
+            return value;
+        }
     }
 }

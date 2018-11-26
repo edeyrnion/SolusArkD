@@ -1,7 +1,12 @@
 ﻿using System.Collections.Generic;
 
-public partial class InputProfile : IInputProfile
+public partial class InputProfile
 {
+    private void Xbox_OneInit()
+    {
+        methods.Add("Xbox One", Xbox_One);  // methods.Add("NAME_OF_DEVICE", NAME_OF_METHOD);
+    }
+
     public void Xbox_One()
     {
         name = "Xbox One";
