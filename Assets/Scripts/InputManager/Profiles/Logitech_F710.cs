@@ -4,14 +4,14 @@ namespace Matthias
 {
     public partial class InputProfile
     {
-        private void Xbox_OneInit()
+        private void Logitech_F710_Init()
         {
-            methods.Add("Xbox One", Xbox_One);  // methods.Add("NAME_OF_DEVICE", NAME_OF_METHOD);
+            methods.Add("Controller (Wireless Gamepad F710)", Logitech_F710);  // methods.Add("NAME_OF_DEVICE", NAME_OF_METHOD);
         }
 
-        public void Xbox_One()
+        public void Logitech_F710()
         {
-            name = "Xbox One";
+            name = "Logitech F710";
 
             axis = new Dictionary<int, string>
         {

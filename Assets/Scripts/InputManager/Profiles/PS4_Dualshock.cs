@@ -1,17 +1,19 @@
 ﻿using System.Collections.Generic;
 
-public partial class InputProfile
+namespace Matthias
 {
-    private void PS4_DualshockInit()
+    public partial class InputProfile
     {
-        methods.Add("PS4 Dualshock", PS4_Dualshock);  // methods.Add("NAME_OF_DEVICE", NAME_OF_METHOD);
-    }
+        private void PS4_DualshockInit()
+        {
+            methods.Add("PS4 Dualshock", PS4_Dualshock);  // methods.Add("NAME_OF_DEVICE", NAME_OF_METHOD);
+        }
 
-    public void PS4_Dualshock()
-    {
-        name = "PS4 Dualshock";
+        public void PS4_Dualshock()
+        {
+            name = "PS4 Dualshock";
 
-        axis = new Dictionary<int, string>
+            axis = new Dictionary<int, string>
         {
             { 0, "AxisX" }, // Left Stick X
             { 1, "AxisY" }, // Left Stick Y
@@ -23,26 +25,27 @@ public partial class InputProfile
             { 7, "Axis8" }, // DPad Y
         };
 
-        buttons = new Dictionary<int, string>
+            buttons = new Dictionary<int, string>
         {
-            { 0, "JoystickButton0" }, // Action Left
-            { 1, "JoystickButton1" }, // Action Bottom
-            { 2, "JoystickButton2" }, // Action Right
-            { 3, "JoystickButton3" }, // Action Top
-            { 4, "JoystickButton4" }, // Left Bumper
-            { 5, "JoystickButton5" }, // Right Bumper
-            { 6, "JoystickButton6" }, // Left Trigger
-            { 7, "JoystickButton7" }, // Right Trigger
-            { 8, "JoystickButton8" }, // Select
-            { 9, "JoystickButton9" }, // Start
-            { 10, "JoystickButton10" }, // Left Stick
-            { 11, "JoystickButton11" }, // Right Stick
-            { 12, "JoystickButton12" }, // Guide
-            { 13, "JoystickButton13" }, // Touchpad
+            { 0, "Button0" }, // Action Left
+            { 1, "Button1" }, // Action Bottom
+            { 2, "Button2" }, // Action Right
+            { 3, "Button3" }, // Action Top
+            { 4, "Button4" }, // Left Bumper
+            { 5, "Button5" }, // Right Bumper
+            { 6, "Button6" }, // Left Trigger
+            { 7, "Button7" }, // Right Trigger
+            { 8, "Button8" }, // Select
+            { 9, "Button9" }, // Start
+            { 10, "Button10" }, // Left Stick
+            { 11, "Button11" }, // Right Stick
+            { 12, "Button12" }, // Guide
+            { 13, "Button13" }, // Touchpad
             { 16, "None" }, // DPad Left
             { 15, "None" }, // DPad Down
             { 17, "None" }, // DPad Right
             { 14, "None" }, // DPad Up
         };
+        }
     }
 }
