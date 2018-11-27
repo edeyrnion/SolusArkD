@@ -6,7 +6,7 @@ namespace Matthias
     {
         private void PS4_DualshockInit()
         {
-            methods.Add("PS4 Dualshock", PS4_Dualshock);  // methods.Add("NAME_OF_DEVICE", NAME_OF_METHOD);
+            methods.Add("Wireless Controller", PS4_Dualshock);  // methods.Add("NAME_OF_DEVICE", NAME_OF_METHOD);
         }
 
         public void PS4_Dualshock()
