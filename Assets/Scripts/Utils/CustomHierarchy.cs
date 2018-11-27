@@ -4,6 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+#if UNITY_EDITOR
 [InitializeOnLoad]
 public class CustomHierarchy : MonoBehaviour
 {
@@ -31,3 +32,4 @@ public class CustomHierarchy : MonoBehaviour
 		}
 	}
 }
+#endif

@@ -90,12 +90,14 @@ namespace David
 		{
 			if (Visualize)
 			{
+#if UNITY_EDITOR
 				Gizmos.color = Color;
 				Gizmos.DrawLine(transform.position, Player.transform.position);
 				Handles.color = Color.yellow;
 				Handles.DrawWireDisc(transform.position, Vector3.up, AlertRadius);
 				Handles.color = Color.red;
 				Handles.DrawWireDisc(transform.position, Vector3.up, DetectionRadius);
+#endif
 			}
 		}
 	}
