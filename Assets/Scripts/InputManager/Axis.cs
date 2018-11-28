@@ -5,7 +5,7 @@
     {
         MoveHorizontal,
         MoveVertical,
-        CaneraHorizontal,
-        CaneraVertical,
+        CameraHorizontal,
+        CameraVertical,
     }
 }

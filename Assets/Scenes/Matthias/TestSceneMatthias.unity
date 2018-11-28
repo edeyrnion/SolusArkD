@@ -313,16 +313,6 @@ Prefab:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1002055630}
-    - target: {fileID: 54346860989736830, guid: b69600de680c40c428a0606d76d8442b,
-        type: 2}
-      propertyPath: m_Constraints
-      value: 112
-      objectReference: {fileID: 0}
-    - target: {fileID: 54346860989736830, guid: b69600de680c40c428a0606d76d8442b,
-        type: 2}
-      propertyPath: m_IsKinematic
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b69600de680c40c428a0606d76d8442b, type: 2}
   m_IsPrefabAsset: 0
@@ -473,7 +463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1386492401}
-  targetOffset: {x: 0, y: 2, z: 0}
+  targetOffset: {x: 0, y: 1, z: 0}
   collisionLayer:
     serializedVersion: 2
     m_Bits: 1024
@@ -485,8 +475,8 @@ MonoBehaviour:
   maxAngleX: 65
   rotationSensivityX: 6
   rotationSensivityY: 4
-  movementSmooth: 0
-  rotationSmooth: 0.32
+  movementSmooth: 0.3
+  rotationSmooth: 0.3
   zoomSmooth: 1
 --- !u!4 &1386492401 stripped
 Transform:
@@ -913,7 +903,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!65 &2068910504
 BoxCollider:

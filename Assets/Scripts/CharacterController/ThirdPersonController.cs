@@ -34,6 +34,9 @@ namespace Matthias
             float moveH = CInput.GetAxis(Axis.MoveHorizontal);
             float moveV = CInput.GetAxis(Axis.MoveVertical);
 
+            moveH += Input.GetAxis("Horizontal");
+            moveV += Input.GetAxis("Vertical");
+
             if (cam != null)
             {
                 cameraForward = Vector3.Scale(cam.forward, new Vector3(1, 0, 1)).normalized;

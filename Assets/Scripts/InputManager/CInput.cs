@@ -9,6 +9,15 @@ namespace Matthias
         private static Dictionary<int, GamepadAxis> axisActions;
         private static Dictionary<int, GamepadButton> btnActions;
 
+        private static Dictionary<int, VirtualAxis> axisKey;
+        private static Dictionary<int, KeyCode> btnKey;
+
+        private struct VirtualAxis
+        {
+            public KeyCode positiveValue { get; }
+            public KeyCode negativeValue { get; }
+        }
+
         public static IReadOnlyDictionary<int, GamepadAxis> AxisActions => axisActions;
         public static IReadOnlyDictionary<int, GamepadButton> BtnActions => btnActions;
 
@@ -23,10 +32,31 @@ namespace Matthias
 
             AddAction(Axis.MoveHorizontal, GamepadAxis.LStick_X, axisActions);
             AddAction(Axis.MoveVertical, GamepadAxis.LStick_Y, axisActions);
-            AddAction(Axis.CaneraHorizontal, GamepadAxis.RStick_X, axisActions);
-            AddAction(Axis.CaneraVertical, GamepadAxis.RStick_Y, axisActions);
+            AddAction(Axis.CameraHorizontal, GamepadAxis.RStick_X, axisActions);
+            AddAction(Axis.CameraVertical, GamepadAxis.RStick_Y, axisActions);
 
             AddAction(Button.Jump, GamepadButton.Action_Bottom, btnActions);
+        }
+
+        private static void KeyboardBindings()
+        {
+            var axis = new Dictionary<int, VirtualAxis>();
+            var keys = new Dictionary<int, KeyCode>();
+
+
+
+        }
+
+        private static float GetVirtualAxis(KeyCode key1, KeyCode key2)
+        {
+            float value = 0f;
+
+            bool b1 = Input.GetKeyDown(key1);
+            bool b2 = Input.GetKeyDown(key2);
+
+            int i = b1.CompareTo(b2);
+
+            return value = Mathf.Clamp(i, -1f, 1f);
         }
 
         private static void AddAction(Axis action, GamepadAxis button, Dictionary<int, GamepadAxis> actions)

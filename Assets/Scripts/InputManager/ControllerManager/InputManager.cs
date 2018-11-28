@@ -25,51 +25,32 @@ namespace Matthias
 
         public float GetAxis(GamepadAxis axis)
         {
-            float value = 0f;
+            float result = 0f;
             int count = inputProfiles.Count;
 
             for (int i = 0; i < count; i++)
             {
                 var inputProfile = inputProfiles[i];
                 string s = inputProfile.Axis[(int)axis];
+
                 if (s == "None")
                     continue;
+
+                float value = Input.GetAxisRaw("Joy" + (i + 1) + "_" + s);
+
                 if (inputProfile.IsInverted[(int)axis])
-                {
-                    if (s.Contains("-"))
-                    {
-                        value -= Input.GetAxisRaw("Joy" + (i + 1) + "_" + s);
-                    }
-                    else if (s.Contains("+"))
-                    {
-                        value -= Input.GetAxisRaw("Joy" + (i + 1) + "_" + s);
-                    }
-                    else
-                    {
-                        value -= Input.GetAxisRaw("Joy" + (i + 1) + "_" + s);
-                    }
-                }
-                else
-                {
-                    value += Input.GetAxisRaw("Joy" + (i + 1) + "_" + s);
-                }
+                    value *= -1f;
+
+                result += value;
             }
 
-            value /= count;
+            if (count > 0)
+            {
+                result /= count;
+            }
 
-            return value;
+            return result;
         }
-
-        public static float ConvertRange(
-            int originalStart, int originalEnd, // original range
-            int newStart, int newEnd, // desired range
-            float value) // value to convert
-        {
-            float scale = (newEnd - newStart) / (originalEnd - originalStart);
-            return (newStart + ((value - originalStart) * scale));
-        }
-
-
 
         public bool GetButton(GamepadButton btn)
         {

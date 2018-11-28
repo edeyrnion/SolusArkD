@@ -98,7 +98,7 @@ namespace Matthias
         private void LateUpdate()
         {
             // Compute input.
-            ControllRotation(CInput.GetAxis(Axis.CaneraHorizontal), CInput.GetAxis(Axis.CaneraVertical));
+            ControllRotation(CInput.GetAxis(Axis.CameraHorizontal), CInput.GetAxis(Axis.CameraVertical));
 
             // Update pivot position.
             var targetPosition = target.position + target.TransformDirection(targetOffset);

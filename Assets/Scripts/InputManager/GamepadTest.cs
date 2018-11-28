@@ -30,65 +30,58 @@ namespace Matthias
             for (int i = 0; i < count; i++)
             {
                 Transform child = transform.GetChild(i);
-
                 GamepadButton btn = GetButtonEnum(child.name);
-                Renderer renderer = child.GetComponent<Renderer>();
-
-                buttons.Add(btn, renderer);
-                btnColor.Add(renderer, renderer.material.color);
+                AddInput(btn, child);
             }
 
             var trans8 = transform.GetChild(8);
-            axis.Add(GamepadAxis.LStick_X, trans8);
-            axisPos.Add(trans8, trans8.position);
-
-            var trans8a = transform.GetChild(8);
-            axis.Add(GamepadAxis.LStick_Y, trans8a);
+            AddInput(GamepadAxis.LStick_X, trans8);
+            AddInput(GamepadAxis.LStick_Y, trans8);
 
             var trans9 = transform.GetChild(9);
-            axis.Add(GamepadAxis.RStick_X, trans9);
-            axisPos.Add(trans9, trans9.position);
-
-            var trans9a = transform.GetChild(9);
-            axis.Add(GamepadAxis.RStick_Y, trans9a);
+            AddInput(GamepadAxis.RStick_X, trans9);
+            AddInput(GamepadAxis.RStick_Y, trans9);
 
             var trans15 = transform.GetChild(15);
-            axis.Add(GamepadAxis.LTrigger, trans15);
-            axisPos.Add(trans15, trans15.position);
+            AddInput(GamepadAxis.LTrigger, trans15);
 
             var trans14 = transform.GetChild(14);
-            axis.Add(GamepadAxis.RTrigger, trans14);
-            axisPos.Add(trans14, trans14.position);
+            AddInput(GamepadAxis.RTrigger, trans14);
 
             var trans4 = transform.GetChild(4);
-            axis.Add(GamepadAxis.DPad_X, trans4);
-            axisPos.Add(trans4, trans4.position);
+            AddInput(GamepadAxis.DPad_X, trans4);
+
+            var trans5 = transform.GetChild(5);
+            AddInput(GamepadAxis.DPad_X, trans5);
 
             var trans6 = transform.GetChild(6);
-            axis.Add(GamepadAxis.DPad_Y, trans6);
-            axisPos.Add(trans6, trans6.position);
+            AddInput(GamepadAxis.DPad_Y, trans6);
 
+            var trans7 = transform.GetChild(7);
+            AddInput(GamepadAxis.DPad_Y, trans7);
         }
 
         private void Update()
         {
-            var buttonsReleased = CInput.GetAllButtonsUp();
-            int btnRCount = buttonsReleased.Count;
+            var btnsReleased = CInput.GetAllButtonsUp();
+            int btnRCount = btnsReleased.Count;
             for (int i = 0; i < btnRCount; i++)
             {
-                if (buttons.ContainsKey(buttonsReleased[i]))
+                var btnReleased = btnsReleased[i];
+                if (buttons.ContainsKey(btnReleased))
                 {
-                    buttons[buttonsReleased[i]].material.color = btnColor[buttons[buttonsReleased[i]]];
+                    buttons[btnReleased].material.color = btnColor[buttons[btnReleased]];
                 }
             }
 
-            var buttonsPressed = CInput.GetAllButtons();
-            int btnPCount = buttonsPressed.Count;
+            var btnsPressed = CInput.GetAllButtons();
+            int btnPCount = btnsPressed.Count;
             for (int i = 0; i < btnPCount; i++)
             {
-                if (buttons.ContainsKey(buttonsPressed[i]))
+                var btnPressed = btnsPressed[i];
+                if (buttons.ContainsKey(btnPressed))
                 {
-                    buttons[buttonsPressed[i]].material.color = new Color(0f, 1f, 0f);
+                    buttons[btnPressed].material.color = new Color(0f, 1f, 0f);
                 }
             }
 
@@ -113,8 +106,9 @@ namespace Matthias
             {
                 axis[GamepadAxis.DPad_X].position = axisPos[axis[GamepadAxis.DPad_X]] + new Vector3(valueDL * 0.3f, 0, 0);
             }
-            else
+            if (valueDL >= 0f)
             {
+                transform.GetChild(5).position = axisPos[transform.GetChild(5)] + new Vector3(valueDL * 0.3f, 0, 0);
             }
 
             float valueDT = axisPushed[GamepadAxis.DPad_Y];
@@ -123,8 +117,9 @@ namespace Matthias
             {
                 axis[GamepadAxis.DPad_Y].position = axisPos[axis[GamepadAxis.DPad_Y]] + new Vector3(0, 0, valueDT * 0.3f);
             }
-            else
+            if (valueDT <= 0f)
             {
+                transform.GetChild(7).position = axisPos[transform.GetChild(7)] + new Vector3(0, 0, valueDT * 0.3f);
             }
 
         }
@@ -134,9 +129,23 @@ namespace Matthias
             return (GamepadButton)Enum.Parse(typeof(GamepadButton), name);
         }
 
-        private GamepadAxis GetAxisEnum(string name)
+        private void AddInput(GamepadButton btn, Transform trans)
         {
-            return (GamepadAxis)Enum.Parse(typeof(GamepadAxis), name);
+            var r = trans.GetComponent<Renderer>();
+            buttons.Add(btn, r);
+            btnColor.Add(r, r.material.color);
+        }
+
+        private void AddInput(GamepadAxis btn, Transform trans)
+        {
+            if (!axis.ContainsKey(btn))
+            {
+                axis.Add(btn, trans);
+            }
+            if (!axisPos.ContainsKey(trans))
+            {
+                axisPos.Add(trans, trans.position);
+            }
         }
     }
 }
