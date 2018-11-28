@@ -9,6 +9,9 @@ namespace Matthias
         private static Dictionary<int, GamepadAxis> axisActions;
         private static Dictionary<int, GamepadButton> btnActions;
 
+        public static IReadOnlyDictionary<int, GamepadAxis> AxisActions => axisActions;
+        public static IReadOnlyDictionary<int, GamepadButton> BtnActions => btnActions;
+
         private static InputManager inputManager;
 
         static CInput()
@@ -97,6 +100,21 @@ namespace Matthias
         {
             bool value = Input.GetKeyUp(key);
             return value;
+        }
+
+        public static List<GamepadButton> GetAllButtons()
+        {
+            return inputManager.GetAllButtons();
+        }
+
+        public static List<GamepadButton> GetAllButtonsUp()
+        {
+            return inputManager.GetAllButtonsUp();
+        }
+
+        public static Dictionary<GamepadAxis, float> GetAllAxis()
+        {
+            return inputManager.GetAllAxis();
         }
     }
 }

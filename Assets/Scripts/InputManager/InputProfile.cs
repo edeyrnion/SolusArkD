@@ -11,24 +11,13 @@ namespace Matthias
 
         public string Name => name;
         public IReadOnlyDictionary<int, string> Axis => axis;
+        public IReadOnlyDictionary<int, bool> IsInverted => isInverted;
         public IReadOnlyDictionary<int, string> Buttons => buttons;
 
         private string name = "";
         private Dictionary<int, string> axis;
+        private Dictionary<int, bool> isInverted;
         private Dictionary<int, string> buttons;
-
-        private Dictionary<int, AnalogAxis> axis2;
-        private struct AnalogAxis
-        {
-            public string Name { get; }
-            public bool IsInverted { get; }
-
-            public AnalogAxis(string name, bool isInverted)
-            {
-                Name = name;
-                IsInverted = isInverted;
-            }
-        }
 
         public InputProfile(string deviceName)
         {
@@ -70,34 +59,32 @@ namespace Matthias
                 { 7, "Axis7" }, // DPad Y
             };
 
-            axis2 = new Dictionary<int, AnalogAxis>(8)
+            isInverted = new Dictionary<int, bool>
             {
-                { 0, new AnalogAxis("AxisX", false) },
-                { 1, new AnalogAxis("AxisY", false) },
-                { 2, new AnalogAxis("Axis4", false) },
-                { 3, new AnalogAxis("Axis5", false) },
-                { 4, new AnalogAxis("Axis3", false) },
-                { 5, new AnalogAxis("Axis6", false) },
-                { 6, new AnalogAxis("Axis8", false) },
-                { 7, new AnalogAxis("Axis7", false) },
+                { 0, false },
+                { 1, true },
+                { 2, false },
+                { 3, true },
+                { 4, false },
+                { 5, false },
+                { 6, false },
+                { 7, false },
             };
-
-            axis2[0] = new AnalogAxis();
 
             buttons = new Dictionary<int, string>
             {
-                { 0, "Button2" }, // Action Left
-                { 1, "Button0" }, // Action Bottom
-                { 2, "Button1" }, // Action Right
-                { 3, "Button3" }, // Action Top
-                { 4, "Button4" }, // Left Bumper
-                { 5, "Button5" }, // Right Bumper
+                { 0, "button 2" }, // Action Left
+                { 1, "button 0" }, // Action Bottom
+                { 2, "button 1" }, // Action Right
+                { 3, "button 3" }, // Action Top
+                { 4, "button 4" }, // Left Bumper
+                { 5, "button 5" }, // Right Bumper
                 { 6, "None" }, // Left Trigger
                 { 7, "None" }, // Right Trigger
-                { 8, "Button6" }, // Select
-                { 9, "Button7" }, // Start
-                { 10, "Button8" }, // Left Stick
-                { 11, "Button9" }, // Right Stick
+                { 8, "button 7" }, // Select
+                { 9, "button 6" }, // Start
+                { 10, "button 8" }, // Left Stick
+                { 11, "button 9" }, // Right Stick
                 { 12, "None" }, // Guide
                 { 13, "None" }, // Touchpad
                 { 16, "None" }, // DPad Left

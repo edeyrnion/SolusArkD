@@ -25,20 +25,32 @@ namespace Matthias
             { 7, "Axis7" }, // DPad Y
         };
 
+            isInverted = new Dictionary<int, bool>
+            {
+                { 0, false },
+                { 1, true },
+                { 2, false },
+                { 3, true },
+                { 4, false },
+                { 5, false },
+                { 6, false },
+                { 7, false },
+            };
+
             buttons = new Dictionary<int, string>
         {
-            { 0, "Button2" }, // Action Left
-            { 1, "Button0" }, // Action Bottom
-            { 2, "Button1" }, // Action Right
-            { 3, "Button3" }, // Action Top
-            { 4, "Button4" }, // Left Bumper
-            { 5, "Button5" }, // Right Bumper
+            { 0, "button 2" }, // Action Left
+            { 1, "button 0" }, // Action Bottom
+            { 2, "button 1" }, // Action Right
+            { 3, "button 3" }, // Action Top
+            { 4, "button 4" }, // Left Bumper
+            { 5, "button 5" }, // Right Bumper
             { 6, "None" }, // Left Trigger
             { 7, "None" }, // Right Trigger
-            { 8, "Button6" }, // Select
-            { 9, "Button7" }, // Start
-            { 10, "Button8" }, // Left Stick
-            { 11, "Button9" }, // Right Stick
+            { 8, "button 7" }, // Select
+            { 9, "button 6" }, // Start
+            { 10, "button 8" }, // Left Stick
+            { 11, "button 9" }, // Right Stick
             { 12, "None" }, // Guide
             { 13, "None" }, // Touchpad
             { 16, "None" }, // DPad Left
