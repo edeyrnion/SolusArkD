@@ -48,7 +48,7 @@ namespace David
 			if (currentPos.x >= endPos.localPosition.x - 0.1f)
 			{
 				currentPos.x = startPos.x;
-				targetPos.x = activePos.position.x;
+				targetPos.x = activePos.localPosition.x;
 				optionsPanel.transform.localPosition = startPos;
 			}
 			else if (currentPos.x >= activePos.localPosition.x - 0.1f)

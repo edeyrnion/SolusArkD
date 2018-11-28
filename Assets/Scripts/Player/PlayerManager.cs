@@ -7,6 +7,5 @@ namespace David
 	public class PlayerManager : MonoBehaviour
 	{
 		[SerializeField] PlayerStats stats;
-
 	}
 }
