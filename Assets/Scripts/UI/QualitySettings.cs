@@ -1,12 +1,23 @@
 ﻿using UnityEngine;
+using TMPro;
 
 namespace David
 {
 	public class QualitySettings : MonoBehaviour
 	{
-		public void SetQuality(int qualityIndex)
+		[SerializeField] TMP_Dropdown dropdown;
+
+		public int qualityIndex;
+
+
+		private void Start()
 		{
-			UnityEngine.QualitySettings.SetQualityLevel(qualityIndex);
+			qualityIndex = dropdown.value;
+		}
+
+		public void SetQuality(int index)
+		{
+			qualityIndex = index;			
 		}
 	}
 }

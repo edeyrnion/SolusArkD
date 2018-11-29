@@ -1,12 +1,17 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 namespace David
 {
 	public class OptionsMenu : GameEventListener
 	{
+		[SerializeField] ResolutionSettings resSettings;
+		[SerializeField] QualitySettings qSettings;
 		[SerializeField] GameObject optionsPanel;
 		[SerializeField] RectTransform endPos;
 		[SerializeField] RectTransform activePos;
+		[SerializeField] Button applyButton;
+
 		[SerializeField] float speed;
 
 		Vector3 startPos;
@@ -22,6 +27,8 @@ namespace David
 			startPos = optionsPanel.transform.localPosition;
 			currentPos = startPos;
 			targetPos = activePos.localPosition;
+
+			applyButton.interactable = false;
 		}
 
 		public void OpenOptionsMenu()
@@ -56,6 +63,13 @@ namespace David
 				currentPos.x = activePos.localPosition.x;
 				targetPos.x = endPos.localPosition.x;
 			}
+		}
+
+		public void ApplyChanges()
+		{
+			UnityEngine.QualitySettings.SetQualityLevel(qSettings.qualityIndex);
+			Screen.SetResolution(resSettings.resWidth, resSettings.resHeight, resSettings.fullScreen);
+			applyButton.interactable = false;
 		}
 	}
 }

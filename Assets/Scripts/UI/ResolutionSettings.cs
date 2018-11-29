@@ -6,11 +6,18 @@ namespace David
 {
 	public class ResolutionSettings : MonoBehaviour
 	{
-		[SerializeField] TMP_Dropdown resolutionDropDown;
+		[SerializeField] TMP_Dropdown resolutionDropDown;			
+
 		Resolution[] resolutions;
 
+		public int resWidth;
+	    public int resHeight;
+		public bool fullScreen;
 
-		private void Start()
+		int resolutionIndex;
+
+
+		private void Awake()
 		{
 			resolutions = Screen.resolutions;
 			resolutionDropDown.ClearOptions();
@@ -33,16 +40,18 @@ namespace David
 			resolutionDropDown.value = currentResolutionIndex;
 			resolutionDropDown.RefreshShownValue();
 		}
-
-		public void SetFullscrren(bool isFullScreen)
+		
+		public void SetFullscreen(bool isFullScreen)
 		{
-			Screen.fullScreen = isFullScreen;
+			fullScreen = isFullScreen;			
 		}
 
-		public void SetResolution(int resolutionIndex)
+		public void SetResolution(int index)
 		{
-			Resolution resolution = resolutions[resolutionIndex];
-			Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
-		}
+			resolutionIndex = index;
+			Resolution resolution = resolutions[index];
+			resWidth = resolution.width;
+			resHeight = resolution.height;			
+		}		
 	}
 }
