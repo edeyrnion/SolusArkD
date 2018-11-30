@@ -6,8 +6,14 @@ namespace Matthias
 {
     public class InputManager
     {
+        // List of button mappings for all controllers found.
         private List<InputProfile> inputProfiles;
 
+        // Virtual left + right trigger buttons for controllers that don't have them.
+        private bool lTriggerPressed = false;
+        private bool rTriggerPressed = false;
+
+        // Get all controllers and load thier corresponding buttnon mappings.
         public InputManager()
         {
             inputProfiles = new List<InputProfile>();
@@ -34,7 +40,27 @@ namespace Matthias
                 string s = inputProfile.Axis[(int)axis];
 
                 if (s == "None")
+                {
+                    if (axis == GamepadAxis.LTrigger)
+                    {
+                        string r = inputProfile.Buttons[(int)GamepadButton.LTrigger];
+                        if (Input.GetKey("joystick " + (i + 1) + " " + r))
+                        {
+                            result = 1f;
+                        }
+                        continue;
+                    }
+                    else if (axis == GamepadAxis.RTrigger)
+                    {
+                        string r = inputProfile.Buttons[(int)GamepadButton.RTrigger];
+                        if (Input.GetKey("joystick " + (i + 1) + " " + r))
+                        {
+                            result = 1f;
+                        }
+                        continue;
+                    }
                     continue;
+                }
 
                 float value = Input.GetAxisRaw("Joy" + (i + 1) + "_" + s);
 
@@ -45,6 +71,11 @@ namespace Matthias
                 {
                     result = value;
                 }
+            }
+
+            if (axis == GamepadAxis.LTrigger || axis == GamepadAxis.RTrigger)
+            {
+                result = Mathf.Clamp01(result);
             }
 
             return result;
@@ -59,9 +90,30 @@ namespace Matthias
             {
                 if (value)
                     break;
-                string s = inputProfiles[i].Buttons[(int)btn];
+
+                var inputProfile = inputProfiles[i];
+                string s = inputProfile.Buttons[(int)btn];
                 if (s == "None")
-                    continue;
+                {
+                    if (btn == GamepadButton.LTrigger)
+                    {
+                        string r = inputProfile.Axis[(int)GamepadAxis.LTrigger];
+                        float axisValue = Input.GetAxisRaw("Joy" + (i + 1) + "_" + r);
+                        lTriggerPressed = value = Mathf.Abs(axisValue) > 0.1f;
+                        continue;
+                    }
+                    else if (btn == GamepadButton.RTrigger)
+                    {
+                        string r = inputProfile.Axis[(int)GamepadAxis.RTrigger];
+                        float axisValue = Input.GetAxisRaw("Joy" + (i + 1) + "_" + r);
+                        rTriggerPressed = value = Mathf.Abs(axisValue) > 0.1f;
+                        continue;
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
                 value = Input.GetKey("joystick " + (i + 1) + " " + s);
             }
 
@@ -77,9 +129,36 @@ namespace Matthias
             {
                 if (value)
                     break;
-                string s = inputProfiles[i].Buttons[(int)btn];
+
+                var inputProfile = inputProfiles[i];
+                string s = inputProfile.Buttons[(int)btn];
                 if (s == "None")
-                    continue;
+                {
+                    if (btn == GamepadButton.LTrigger)
+                    {
+                        string r = inputProfile.Axis[(int)GamepadAxis.LTrigger];
+                        float axisValue = Input.GetAxisRaw("Joy" + (i + 1) + "_" + r);
+                        if (Mathf.Abs(axisValue) > 0.1f && !lTriggerPressed)
+                        {
+                            value = true;
+                        }
+                        continue;
+                    }
+                    else if (btn == GamepadButton.RTrigger)
+                    {
+                        string r = inputProfile.Axis[(int)GamepadAxis.RTrigger];
+                        float axisValue = Input.GetAxisRaw("Joy" + (i + 1) + "_" + r);
+                        if (Mathf.Abs(axisValue) > 0.1f && !rTriggerPressed)
+                        {
+                            value = true;
+                        }
+                        continue;
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
                 value = Input.GetKeyDown("joystick " + (i + 1) + " " + s);
             }
 
@@ -95,9 +174,36 @@ namespace Matthias
             {
                 if (value)
                     break;
-                string s = inputProfiles[i].Buttons[(int)btn];
+
+                var inputProfile = inputProfiles[i];
+                string s = inputProfile.Buttons[(int)btn];
                 if (s == "None")
-                    continue;
+                {
+                    if (btn == GamepadButton.LTrigger)
+                    {
+                        string r = inputProfile.Axis[(int)GamepadAxis.LTrigger];
+                        float axisValue = Input.GetAxisRaw("Joy" + (i + 1) + "_" + r);
+                        if (Mathf.Abs(axisValue) < 0.1f && lTriggerPressed)
+                        {
+                            value = true;
+                        }
+                        continue;
+                    }
+                    else if (btn == GamepadButton.RTrigger)
+                    {
+                        string r = inputProfile.Axis[(int)GamepadAxis.RTrigger];
+                        float axisValue = Input.GetAxisRaw("Joy" + (i + 1) + "_" + r);
+                        if (Mathf.Abs(axisValue) < 0.1f && rTriggerPressed)
+                        {
+                            value = true;
+                        }
+                        continue;
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
                 value = Input.GetKeyUp("joystick " + (i + 1) + " " + s);
             }
 
