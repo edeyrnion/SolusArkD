@@ -4,25 +4,25 @@ namespace Matthias
 {
     public partial class InputProfile
     {
-        private void Logitech_F710_Init()
+        private void PS3_DualshockInit()
         {
-            methods.Add("Controller (Wireless Gamepad F710)", Logitech_F710);  // methods.Add("NAME_OF_DEVICE", NAME_OF_METHOD);
+            methods.Add("USB Joystick", PS3_Dualshock);  // methods.Add("NAME_OF_DEVICE", NAME_OF_METHOD);
         }
 
-        public void Logitech_F710()
+        public void PS3_Dualshock()
         {
-            name = "Logitech F710";
+            name = "PS3 Dualshock";
 
             axis = new Dictionary<int, string>
             {
                 { 0, "AxisX" }, // Left Stick X
                 { 1, "AxisY" }, // Left Stick Y
-                { 2, "Axis4" }, // Right Stick X
-                { 3, "Axis5" }, // Richt Stick Y
-                { 4, "Axis9" }, // Left Trigger
-                { 5, "Axis10" }, // Right Trigger
-                { 6, "Axis6" }, // DPad X
-                { 7, "Axis7" }, // DPad Y
+                { 2, "Axis3" }, // Right Stick X
+                { 3, "Axis4" }, // Richt Stick Y
+                { 4, "None" }, // Left Trigger
+                { 5, "None" }, // Right Trigger
+                { 6, "Axis5" }, // DPad X
+                { 7, "Axis6" }, // DPad Y
             };
 
             isInverted = new Dictionary<int, bool>
@@ -39,18 +39,18 @@ namespace Matthias
 
             buttons = new Dictionary<int, string>
             {
-                { 0, "button 2" }, // Action Left
-                { 1, "button 0" }, // Action Bottom
+                { 0, "button 3" }, // Action Left
+                { 1, "button 2" }, // Action Bottom
                 { 2, "button 1" }, // Action Right
-                { 3, "button 3" }, // Action Top
+                { 3, "button 0" }, // Action Top
                 { 4, "button 4" }, // Left Bumper
                 { 5, "button 5" }, // Right Bumper
-                { 6, "None" }, // Left Trigger
-                { 7, "None" }, // Right Trigger
-                { 8, "button 7" }, // Select
-                { 9, "button 6" }, // Start
-                { 10, "button 8" }, // Left Stick
-                { 11, "button 9" }, // Right Stick
+                { 6, "button 6" }, // Left Trigger
+                { 7, "button 7" }, // Right Trigger
+                { 8, "button 9" }, // Select
+                { 9, "button 8" }, // Start
+                { 10, "button 10" }, // Left Stick
+                { 11, "button 11" }, // Right Stick
                 { 12, "None" }, // Guide
                 { 13, "None" }, // Touchpad
                 { 16, "None" }, // DPad Left

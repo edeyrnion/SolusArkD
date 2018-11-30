@@ -53,9 +53,9 @@ namespace Matthias
                 { 1, "AxisY" }, // Left Stick Y
                 { 2, "Axis4" }, // Right Stick X
                 { 3, "Axis5" }, // Richt Stick Y
-                { 4, "Axis3" }, // Left Trigger
-                { 5, "Axis6" }, // Right Trigger
-                { 6, "Axis8" }, // DPad X
+                { 4, "Axis9" }, // Left Trigger
+                { 5, "Axis10" }, // Right Trigger
+                { 6, "Axis6" }, // DPad X
                 { 7, "Axis7" }, // DPad Y
             };
 

@@ -49,14 +49,12 @@ namespace Matthias
 
         private static float GetVirtualAxis(KeyCode key1, KeyCode key2)
         {
-            float value = 0f;
-
             bool b1 = Input.GetKeyDown(key1);
             bool b2 = Input.GetKeyDown(key2);
 
             int i = b1.CompareTo(b2);
 
-            return value = Mathf.Clamp(i, -1f, 1f);
+            return Mathf.Clamp(i, -1f, 1f);
         }
 
         private static void AddAction(Axis action, GamepadAxis button, Dictionary<int, GamepadAxis> actions)

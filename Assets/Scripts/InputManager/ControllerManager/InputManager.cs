@@ -41,12 +41,10 @@ namespace Matthias
                 if (inputProfile.IsInverted[(int)axis])
                     value *= -1f;
 
-                result += value;
-            }
-
-            if (count > 0)
-            {
-                result /= count;
+                if (Mathf.Abs(value) > Mathf.Abs(result))
+                {
+                    result = value;
+                }
             }
 
             return result;
