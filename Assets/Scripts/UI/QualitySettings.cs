@@ -10,14 +10,14 @@ namespace David
 		public int qualityIndex;
 
 
-		private void Start()
+		private void Awake()
 		{
 			qualityIndex = dropdown.value;
 		}
 
 		public void SetQuality(int index)
 		{
-			qualityIndex = index;			
+			qualityIndex = index;
 		}
 	}
 }
