@@ -1,7 +1,7 @@
 ﻿namespace Matthias
 {
     /// <summary>Available axis input.</summary>
-    public enum Axis
+    public enum CAxis
     {
         MoveHorizontal,
         MoveVertical,

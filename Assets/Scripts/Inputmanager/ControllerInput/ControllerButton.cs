@@ -1,7 +1,7 @@
-﻿namespace Matthias
+﻿namespace Matthias.Inputmanager
 {
     /// <summary>Available gamepad buttons.</summary>
-    public enum GamepadButton
+    public enum ControllerButton
     {
         Action_Left,
         Action_Bottom,
@@ -11,12 +11,10 @@
         RBumper,
         LTrigger,
         RTrigger,
-        Start,
         Select,
+        Start,
         LStick,
         RStick,
-        Guide,
-        Touchpad,
         DPad_Left,
         DPad_Down,
         DPad_Right,

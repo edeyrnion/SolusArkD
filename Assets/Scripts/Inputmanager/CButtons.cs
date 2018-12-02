@@ -1,7 +1,7 @@
 ﻿namespace Matthias
 {
     /// <summary>Available button input.</summary>
-    public enum Button
+    public enum CButton
     {
         Jump,
     }

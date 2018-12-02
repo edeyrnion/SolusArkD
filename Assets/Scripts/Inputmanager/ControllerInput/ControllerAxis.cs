@@ -1,7 +1,7 @@
-﻿namespace Matthias
+﻿namespace Matthias.Inputmanager
 {
     /// <summary>Available gamepad axis.</summary>
-    public enum GamepadAxis
+    public enum ControllerAxis
     {
         LStick_X,
         LStick_Y,

@@ -1,106 +1,150 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using Matthias.Inputmanager;
 
 namespace Matthias
 {
-    /// <summary>Interface into the Input system.</summary>
     public static class CInput
     {
-        private static Dictionary<int, GamepadAxis> axisActions;
-        private static Dictionary<int, GamepadButton> btnActions;
+        private static Dictionary<int, ControllerAxis> controllerAxes;
+        private static Dictionary<int, ControllerButton> controllerButtons;
 
-        private static Dictionary<int, VirtualAxis> axisKey;
-        private static Dictionary<int, KeyCode> btnKey;
+        private static Dictionary<int, string> buttons;
+        private static Dictionary<int, string> axes;
 
-        private struct VirtualAxis
-        {
-            public KeyCode positiveValue { get; }
-            public KeyCode negativeValue { get; }
-        }
-
-        public static IReadOnlyDictionary<int, GamepadAxis> AxisActions => axisActions;
-        public static IReadOnlyDictionary<int, GamepadButton> BtnActions => btnActions;
-
-        private static InputManager inputManager;
+        private static ControllerInput controllerInput;
 
         static CInput()
         {
-            axisActions = new Dictionary<int, GamepadAxis>();
-            btnActions = new Dictionary<int, GamepadButton>();
+            controllerInput = new ControllerInput();
 
-            inputManager = new InputManager();
-
-            AddAction(Axis.MoveHorizontal, GamepadAxis.LStick_X, axisActions);
-            AddAction(Axis.MoveVertical, GamepadAxis.LStick_Y, axisActions);
-            AddAction(Axis.CameraHorizontal, GamepadAxis.RStick_X, axisActions);
-            AddAction(Axis.CameraVertical, GamepadAxis.RStick_Y, axisActions);
-
-            AddAction(Button.Jump, GamepadButton.Action_Bottom, btnActions);
+            ControllerBindings();
+            KeyBindings();
         }
 
-        private static void KeyboardBindings()
+        private static void ControllerBindings()
         {
-            var axis = new Dictionary<int, VirtualAxis>();
-            var keys = new Dictionary<int, KeyCode>();
+            controllerAxes = new Dictionary<int, ControllerAxis>
+            {
+                {(int)CAxis.MoveHorizontal, ControllerAxis.LStick_X },
+                {(int)CAxis.MoveVertical, ControllerAxis.LStick_Y },
+                {(int)CAxis.CameraHorizontal, ControllerAxis.RStick_X },
+                {(int)CAxis.CameraVertical, ControllerAxis.RStick_Y },
+            };
 
-
-
+            controllerButtons = new Dictionary<int, ControllerButton>
+            {
+                {(int)CButton.Jump, ControllerButton.Action_Right },
+            };
         }
 
-        private static float GetVirtualAxis(KeyCode key1, KeyCode key2)
+        private static void KeyBindings()
         {
-            bool b1 = Input.GetKeyDown(key1);
-            bool b2 = Input.GetKeyDown(key2);
+            axes = new Dictionary<int, string>
+            {
+                {(int)CAxis.MoveHorizontal, "Horizontal" },
+                {(int)CAxis.MoveVertical, "Vertical" },
+                {(int)CAxis.CameraHorizontal, "Mouse X" },
+                {(int)CAxis.CameraVertical, "Mouse Y" },
+            };
 
-            int i = b1.CompareTo(b2);
-
-            return Mathf.Clamp(i, -1f, 1f);
-        }
-
-        private static void AddAction(Axis action, GamepadAxis button, Dictionary<int, GamepadAxis> actions)
-        {
-            actions.Add((int)action, button);
-        }
-
-        private static void AddAction(Button action, GamepadButton button, Dictionary<int, GamepadButton> actions)
-        {
-            actions.Add((int)action, button);
+            buttons = new Dictionary<int, string>
+            {
+                { (int)CButton.Jump, "Jump" },
+            };
         }
 
         /// <summary>Returns the value of the virtual axis identified by axisName.</summary>
         /// <param name="axisName">The name of the axis.</param>
         /// <returns>The value of the axis.</returns>
-        public static float GetAxis(Axis axisName)
+        public static float GetAxis(CAxis axisName)
         {
-            float value = inputManager.GetAxis(axisActions[(int)axisName]);
-            return value;
+            float result = 0f;
+
+            if (axisName == CAxis.CameraHorizontal || axisName == CAxis.CameraVertical)
+            {
+                float value1 = controllerInput.GetAxis(controllerAxes[(int)axisName]) * Time.deltaTime * 70f;
+                float value2 = Input.GetAxis(axes[(int)axisName]);
+
+                if (Mathf.Abs(value1) > Mathf.Abs(value2))
+                {
+                    result = value1;
+                }
+                else
+                {
+                    result = value2;
+                }
+            }
+            else
+            {
+                float value1 = controllerInput.GetAxis(controllerAxes[(int)axisName]);
+                float value2 = Input.GetAxis(axes[(int)axisName]);
+
+                if (Mathf.Abs(value1) > Mathf.Abs(value2))
+                {
+                    result = value1;
+                }
+                else
+                {
+                    result = value2;
+                }
+            }
+
+            return result;
         }
 
         /// <summary>Returns true while the virtual button identified by buttonName is held down.</summary>
         /// <param name="buttonName">The name of the button.</param>
         /// <returns>True when an button has been pressed and not released.</returns>
-        public static bool GetButton(Button buttonName)
+        public static bool GetButton(CButton buttonName)
         {
-            bool value = inputManager.GetButton(btnActions[(int)buttonName]);
-            return value;
+            bool result = false;
+
+            bool value1 = controllerInput.GetButton(controllerButtons[(int)buttonName]);
+            bool value2 = Input.GetButton(buttons[(int)buttonName]);
+
+            if (value1 == true || value2 == true)
+            {
+                result = true;
+            }
+
+            return result;
         }
 
         /// <summary>Returns true during the frame the user pressed down the virtual button identified by buttonName.</summary>
         /// <param name="buttonName">The name of the button.</param>
         /// <returns>True when an button has been pressed.</returns>
-        public static bool GetButtonDown(Button buttonName)
+        public static bool GetButtonDown(CButton buttonName)
         {
-            bool value = inputManager.GetButtonDown(btnActions[(int)buttonName]);
-            return value;
+            bool result = false;
+
+            bool value1 = controllerInput.GetButtonDown(controllerButtons[(int)buttonName]);
+            bool value2 = Input.GetButtonDown(buttons[(int)buttonName]);
+
+            if (value1 == true || value2 == true)
+            {
+                result = true;
+            }
+
+            return result;
         }
 
         /// <summary>Returns true the first frame the user releases the virtual button identified by buttonName.</summary>
         /// <param name="buttonName">The name of the button.</param>
         /// <returns>True when an button has been released.</returns>
-        public static bool GetButtonUp(Button buttonName)
+        public static bool GetButtonUp(CButton buttonName)
         {
-            bool value = inputManager.GetButtonUp(btnActions[(int)buttonName]);
-            return value;
+            bool result = false;
+
+            bool value1 = controllerInput.GetButtonUp(controllerButtons[(int)buttonName]);
+            bool value2 = Input.GetButtonUp(buttons[(int)buttonName]);
+
+            if (value1 == true || value2 == true)
+            {
+                result = true;
+            }
+
+            return result;
         }
 
         /// <summary>Returns true while the key identified by key is held down.</summary>
@@ -128,21 +172,6 @@ namespace Matthias
         {
             bool value = Input.GetKeyUp(key);
             return value;
-        }
-
-        public static List<GamepadButton> GetAllButtons()
-        {
-            return inputManager.GetAllButtons();
-        }
-
-        public static List<GamepadButton> GetAllButtonsUp()
-        {
-            return inputManager.GetAllButtonsUp();
-        }
-
-        public static Dictionary<GamepadAxis, float> GetAllAxis()
-        {
-            return inputManager.GetAllAxis();
         }
     }
 }

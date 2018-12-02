@@ -31,11 +31,8 @@ namespace Matthias
 
         private void FixedUpdate()
         {
-            float moveH = CInput.GetAxis(Axis.MoveHorizontal);
-            float moveV = CInput.GetAxis(Axis.MoveVertical);
-
-            moveH += Input.GetAxis("Horizontal");
-            moveV += Input.GetAxis("Vertical");
+            float moveH = CInput.GetAxis(CAxis.MoveHorizontal);
+            float moveV = CInput.GetAxis(CAxis.MoveVertical);
 
             if (cam != null)
             {
