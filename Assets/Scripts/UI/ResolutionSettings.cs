@@ -14,9 +14,7 @@ namespace David
 	    public int resHeight;
 		public bool fullScreen;
 
-		int resolutionIndex;
-
-
+	
 		private void Awake()
 		{
 			resolutions = Screen.resolutions;
@@ -47,8 +45,7 @@ namespace David
 		}
 
 		public void SetResolution(int index)
-		{
-			resolutionIndex = index;
+		{			
 			Resolution resolution = resolutions[index];
 			resWidth = resolution.width;
 			resHeight = resolution.height;			
