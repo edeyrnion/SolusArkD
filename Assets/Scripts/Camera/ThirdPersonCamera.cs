@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using David;
+
 namespace Matthias
 {
     public class ThirdPersonCamera : MonoBehaviour

@@ -34,8 +34,8 @@ namespace Matthias.Inputmanager
                 { 3, new Button { ButtonName = prefix + "button 3" } }, // Action Top
                 { 4, new Button { ButtonName = prefix + "button 4" } }, // Left Bumper
                 { 5, new Button { ButtonName = prefix + "button 5" } }, // Right Bumper
-                { 6, new Button { IsVirtual = true, AxisName = "axis 9", FromePositiveAxis = true, } }, // Left Trigger
-                { 7, new Button { IsVirtual = true, AxisName = "axis 10", FromePositiveAxis = true, } }, // Right Trigger
+                { 6, new Button { IsVirtual = true, AxisName = prefix + "axis 9", FromePositiveAxis = true, } }, // Left Trigger
+                { 7, new Button { IsVirtual = true, AxisName = prefix + "axis 10", FromePositiveAxis = true, } }, // Right Trigger
                 { 8, new Button { ButtonName = prefix + "button 6" } }, // Select
                 { 9, new Button { ButtonName = prefix + "button 7" } }, // Start
                 { 10, new Button { ButtonName = prefix + "button 8" } }, // Left Stick
