@@ -7,6 +7,7 @@ namespace David
 	public class EnemyManager : MonoBehaviour
 	{
 		[SerializeField] EnemyStats stats;
+
 		public State CurrentState = State.Patroling;
 		public GameObject Player;
 		public Color Color = Color.green;
@@ -19,6 +20,7 @@ namespace David
 		public bool Visualize = true;
 		public bool Detected;
 		public bool OtherEnemyIsAlerted;
+
 		EnemyMove enemyMove;
 		EnemyInvestigate enemyInvestigate;
 		EnemyFollow enemyFollow;
