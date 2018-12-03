@@ -78,8 +78,6 @@ namespace Matthias
                 }
             }
 
-            gamestate = gamemanager.GameState;
-
             // Backup default values.
             defaultTarget = target;
             defaultTargetOffset = targetOffset;
