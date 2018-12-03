@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+using David;
 namespace Matthias
 {
     public class ThirdPersonCamera : MonoBehaviour
@@ -8,6 +8,9 @@ namespace Matthias
         [SerializeField] private Vector3 targetOffset = new Vector3(0f, 0f, 0f);
         [SerializeField] private LayerMask collisionLayer;
         [SerializeField] private LayerMask fadeOutLayer;
+
+        [SerializeField] private GameManager gamemanager;
+        private GameState gamestate;
 
         // Camera distance.
         [Header("Zoom")]
@@ -75,6 +78,8 @@ namespace Matthias
                 }
             }
 
+            gamestate = gamemanager.GameState;
+
             // Backup default values.
             defaultTarget = target;
             defaultTargetOffset = targetOffset;
@@ -97,6 +102,16 @@ namespace Matthias
 
         private void LateUpdate()
         {
+            if (gamemanager != null)
+            {
+                GetGamestate();
+
+                if (gamestate == GameState.PauseMenu)
+                {
+                    return;
+                }
+            }
+
             // Compute input.
             ControllRotation(CInput.GetAxis(CAxis.CameraHorizontal), CInput.GetAxis(CAxis.CameraVertical));
 
@@ -163,6 +178,11 @@ namespace Matthias
             desiredRotationY += axisX * rotationSensivityX;
             desiredRotationX += axisY * -1 * rotationSensivityY;
             desiredRotationX = Mathf.Clamp(desiredRotationX, minAngleX, maxAngleX);
+        }
+
+        private void GetGamestate()
+        {
+            gamestate = gamemanager.GameState;
         }
 
         // Public access.
