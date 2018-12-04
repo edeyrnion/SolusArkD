@@ -8,12 +8,12 @@ namespace David
 {
 	public class BossManager : GameEventListener
 	{
-		[SerializeField] GhostBehaviour ghostBehaviour;
 		[SerializeField] GameObject[] pillars;
 		[SerializeField] float chargeTimer;
 
 		public BossState state = BossState.Idle;
 
+		public GhostBehaviour ghostBehaviour;
 		public NavMeshAgent agent;
 		public GameObject target;
 

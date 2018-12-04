@@ -8,7 +8,7 @@ namespace David
 	{
 		[SerializeField] Transform endPos;
 		[SerializeField] Transform center;
-		[SerializeField] GameObject moveZone;
+		[SerializeField] Transform playerPos;
 
 		Vector3 ghostTarget;
 
@@ -16,12 +16,19 @@ namespace David
 		float timer;
 
 		bool behave;
-		bool goBack;
 		bool moveAround;
 
 		public void StartBehaviour()
 		{
 			behave = true;
+		}
+
+		public void StopBehaviour()
+		{
+			behave = false;
+			moveAround = false;
+			transform.localPosition = Vector3.zero;
+			transform.GetChild(0).localRotation = Quaternion.Euler(Vector3.zero);
 		}
 
 		private void Update()
@@ -42,46 +49,26 @@ namespace David
 			{
 				MoveAround();
 			}
-
 		}
 
 		private void MoveAround()
 		{
-			if (!goBack)
+			float distance = (transform.position - ghostTarget).sqrMagnitude;
+			if (distance <= (0.2f * 0.2f))
 			{
-				float distance = (transform.position - ghostTarget).sqrMagnitude;
-				if (distance <= (0.2f * 0.2f))
-				{
-					ghostTarget = GetNextTarget();
-				}
-				transform.LookAt(ghostTarget);
-				transform.Translate(ghostTarget * Time.deltaTime * speed);
+				ghostTarget = GetNextTarget();
 			}
-			else if (goBack)
-			{
-				transform.Translate(center.position * Time.deltaTime * speed);
-				transform.LookAt(center);
-				timer += Time.deltaTime;
-				if (timer >= 2f)
-				{
-					goBack = false;
-				}
-			}
+			transform.position = Vector3.MoveTowards(transform.position, ghostTarget, Time.deltaTime * speed * 5);
+			Vector3 newDir = playerPos.position;
+			newDir.y = transform.GetChild(0).transform.position.y;
+			transform.GetChild(0).transform.LookAt(newDir, Vector3.up);
 		}
 
 		private Vector3 GetNextTarget()
 		{
-			float x = Random.Range(-20, 20);
-			float z = Random.Range(-20, 20);
-			return new Vector3(x, 0f, z);
-		}
-
-		private void OnTriggerExit(Collider other)
-		{
-			if (other.gameObject == moveZone)
-			{
-				goBack = true;
-			}
+			float x = Random.Range(-40, 50);
+			float z = Random.Range(-35, 30);
+			return new Vector3(center.transform.position.x + x, transform.position.y, center.transform.position.z + z);
 		}
 	}
 }

@@ -29,6 +29,7 @@ namespace David
 				manager.Break = false;
 				manager.Charging = false;
 				manager.agent.isStopped = false;
+				manager.ghostBehaviour.StopBehaviour();
 				manager.state = BossState.Follow;
 			}
 		}

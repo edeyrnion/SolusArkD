@@ -9,7 +9,7 @@ namespace David
 	{
 		BossManager manager;
 		NavMeshAgent agent;
-		
+
 
 		private void Start()
 		{
@@ -21,8 +21,8 @@ namespace David
 		{
 			if (manager.state != BossState.Follow) { return; }
 			manager.CheckDistanceToTarget();
-			transform.LookAt(manager.target.transform);
+			//transform.localRotation = Quaternion.LookRotation(manager.target.transform.position);
 			agent.SetDestination(manager.target.transform.position);
-		}		
+		}
 	}
 }
