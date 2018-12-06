@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace David
@@ -7,7 +6,9 @@ namespace David
 	public class BossCharge : MonoBehaviour
 	{
 		[SerializeField] float waitTime;
+		[SerializeField] float knockBackTime;
 		[SerializeField] float chargeSpeed;
+		[SerializeField] float force;
 
 		BossManager manager;
 
@@ -15,8 +16,10 @@ namespace David
 
 		float time;
 		float chargeTime;
+		float knockBackTimer;
 
 		bool charging;
+		bool knockBack;
 
 
 		private void Start()
@@ -26,6 +29,8 @@ namespace David
 
 		private void Update()
 		{
+			if (knockBack) { KnockBackPlayer(); }
+
 			if (manager.state != BossState.Charge) { return; }
 			if (!charging)
 			{
@@ -48,7 +53,19 @@ namespace David
 					return;
 				}
 
-				float chargeTimer = 1.5f;
+				if (manager.HitPlayer)
+				{
+					manager.HitPlayer = false;
+					chargeTime = 0f;
+					charging = false;
+					manager.BossAttack.DoDamage(manager.ChargeDamage);
+					knockBack = true;
+					Debug.Log("Did Charge Damage!");
+					manager.state = BossState.Follow;
+					return;
+				}
+
+				float chargeTimer = 1f;
 				if (chargeTime >= chargeTimer) { return; }
 
 				transform.position += transform.forward * Time.deltaTime * chargeSpeed;
@@ -59,6 +76,21 @@ namespace David
 					IEnumerator coroutine = Wait(2f);
 					StartCoroutine(coroutine);
 				}
+			}
+		}
+
+		void KnockBackPlayer()
+		{
+			knockBackTimer += Time.deltaTime;
+
+			Vector3 direction = gameObject.transform.forward;
+			manager.target.transform.position += direction * Time.deltaTime * force;
+
+			if (knockBackTimer >= knockBackTime)
+			{
+				knockBackTimer = 0f;
+				knockBack = false;
+				manager.Charging = false;
 			}
 		}
 

@@ -8,16 +8,32 @@ namespace David
 	{
 		BossManager manager;
 
+		float timer;
+
 
 		private void Start()
 		{
 			manager = GetComponent<BossManager>();
+			timer = manager.AttackTimer;
 		}
 
 		private void Update()
 		{
-			if (manager.state != BossState.Attack) { return; }			
+			if (manager.state != BossState.Attack) { return; }
 			manager.CheckDistanceToTarget();
+			timer += Time.deltaTime;
+			if (timer >= manager.AttackTimer)
+			{
+				timer = 0f;
+				DoDamage(manager.Damage);
+			}
+
+		}
+
+		public void DoDamage(int damage)
+		{
+			manager.target.GetComponent<PlayerManager>().Stats.Health -= damage;
+
 		}
 	}
 }

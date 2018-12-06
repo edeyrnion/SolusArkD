@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace David
 {
@@ -12,15 +10,16 @@ namespace David
 
 		Vector3 ghostTarget;
 
-		float speed = 1f;
+		[SerializeField] float speed = 1f;
 		float timer;
 
 		bool behave;
 		bool moveAround;
-
+		
+		
 		public void StartBehaviour()
 		{
-			behave = true;
+			behave = true;			
 		}
 
 		public void StopBehaviour()
@@ -29,6 +28,7 @@ namespace David
 			moveAround = false;
 			transform.localPosition = Vector3.zero;
 			transform.GetChild(0).localRotation = Quaternion.Euler(Vector3.zero);
+			gameObject.SetActive(false);
 		}
 
 		private void Update()

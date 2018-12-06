@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
   weapon: {fileID: 11400000, guid: 3988d74e149da6949adac7530ca34984, type: 2}
-  Health: 10
+  Health: 100
+  Damage: 1
+  AttackTimer: 0.5
   WalkingSpeed: 10

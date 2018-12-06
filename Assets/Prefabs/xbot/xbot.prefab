@@ -65,13 +65,14 @@ GameObject:
   m_Component:
   - component: {fileID: 4864138164921756}
   - component: {fileID: 95777795528171792}
-  - component: {fileID: 114685646894688346}
-  - component: {fileID: 54394268978041104}
-  - component: {fileID: 114526843995822142}
   - component: {fileID: 136700727848015782}
+  - component: {fileID: 54394268978041104}
+  - component: {fileID: 114685646894688346}
+  - component: {fileID: 114526843995822142}
+  - component: {fileID: 114682727909219584}
   m_Layer: 0
   m_Name: xbot
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1912,8 +1913,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1059176025346590}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25, y: 0, z: -25}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -317, y: 0, z: 7.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4905239711427796}
@@ -2088,7 +2089,7 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!95 &95777795528171792
@@ -2120,6 +2121,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3419b2bb212d0541996338d6a6c3f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114682727909219584
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1059176025346590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bac922ec5eab9b34ea214d0cb4322039, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Stats: {fileID: 11400000, guid: cbd4795a02e8dd041b14ae7e6a1d586d, type: 2}
 --- !u!114 &114685646894688346
 MonoBehaviour:
   m_ObjectHideFlags: 1

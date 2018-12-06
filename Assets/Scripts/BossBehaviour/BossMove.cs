@@ -21,7 +21,6 @@ namespace David
 		{
 			if (manager.state != BossState.Follow) { return; }
 			manager.CheckDistanceToTarget();
-			//transform.localRotation = Quaternion.LookRotation(manager.target.transform.position);
 			agent.SetDestination(manager.target.transform.position);
 		}
 	}

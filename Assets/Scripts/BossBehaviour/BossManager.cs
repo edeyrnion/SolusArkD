@@ -1,27 +1,30 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 
 namespace David
 {
 	public class BossManager : GameEventListener
-	{
-		[SerializeField] GameObject[] pillars;
+	{		
 		[SerializeField] float chargeTimer;
 
 		public BossState state = BossState.Idle;
 
+		public BossAttack BossAttack;
 		public GhostBehaviour ghostBehaviour;
 		public NavMeshAgent agent;
 		public GameObject target;
 
+		public int Damage;
+		public int ChargeDamage;
+
+		public float AttackTimer;
 		public float attackDistance;
 		public float bossSpeed;
 
 		public bool Charging = true;
 		public bool Break;
+		public bool HitPlayer;
 
 
 		float time;
@@ -31,6 +34,7 @@ namespace David
 		{
 			agent = GetComponent<NavMeshAgent>();
 			agent.speed = bossSpeed;
+			BossAttack = GetComponent<BossAttack>();
 		}
 
 		public void StartFight()
@@ -81,7 +85,15 @@ namespace David
 			if (other.gameObject.CompareTag("Obstacle") && state == BossState.Charge)
 			{
 				Break = true;
+				ghostBehaviour.gameObject.SetActive(true);
 				ghostBehaviour.StartBehaviour();
+			}
+			else if (other.gameObject.CompareTag("Player") && state == BossState.Charge)
+			{
+				HitPlayer = true;
+				print("I need to do something here ._. (Charged into Player)");
+				//bool = active (wait for a short time and then start moving/attacking)
+				//Do lot's of damage and knock player prone
 			}
 		}
 

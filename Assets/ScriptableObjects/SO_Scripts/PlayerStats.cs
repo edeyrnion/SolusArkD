@@ -7,6 +7,8 @@ namespace David
 	{
 		[SerializeField] WeaponStats weapon;
 		public int Health;
+		public int Damage;
+		public float AttackTimer;
 		public float WalkingSpeed;
-	} 
+	}
 }

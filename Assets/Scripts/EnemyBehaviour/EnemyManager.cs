@@ -63,7 +63,7 @@ namespace David
 
 		public void DealDamage(int damage)
 		{
-			Debug.Log($"Dealt {damage} points of damage!");
+			Player.GetComponent<PlayerManager>().Stats.Health -= damage;
 		}
 
 		public void ChangeState(State state)
