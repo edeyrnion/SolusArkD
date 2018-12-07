@@ -1,25 +1,27 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackZone : MonoBehaviour
+namespace David
 {
-	public List<GameObject> enemies = new List<GameObject>();
-	
-
-	private void OnTriggerEnter(Collider other)
+	public class AttackZone : MonoBehaviour
 	{
-		if (other.gameObject.CompareTag("Enemy"))
-		{
-			enemies.Add(other.gameObject);
-		}
-	}
+		public List<GameObject> enemies = new List<GameObject>();
 
-	private void OnTriggerExit(Collider other)
-	{
-		if (other.gameObject.CompareTag("Enemy"))
+
+		private void OnTriggerEnter(Collider other)
 		{
-			enemies.Remove(other.gameObject);
+			if (other.gameObject.CompareTag("Enemy"))
+			{
+				enemies.Add(other.gameObject);
+			}
 		}
-	}
+
+		private void OnTriggerExit(Collider other)
+		{
+			if (other.gameObject.CompareTag("Enemy"))
+			{
+				enemies.Remove(other.gameObject);
+			}
+		}
+	} 
 }

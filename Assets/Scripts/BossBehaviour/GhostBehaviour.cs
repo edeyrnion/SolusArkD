@@ -15,11 +15,11 @@ namespace David
 
 		bool behave;
 		bool moveAround;
-		
-		
+
+
 		public void StartBehaviour()
 		{
-			behave = true;			
+			behave = true;
 		}
 
 		public void StopBehaviour()
@@ -36,13 +36,13 @@ namespace David
 			if (behave && !moveAround)
 			{
 				float distance = (transform.localPosition - endPos.localPosition).sqrMagnitude;
-				if (distance <= (0.2f * 0.2f))
-				{
+				if (distance <= 0.05f)
+				{				
 					moveAround = true;
 					ghostTarget = GetNextTarget();
 					return;
-				}
-				transform.Translate(endPos.localPosition * Time.deltaTime * speed);
+				}				
+				transform.position = Vector3.MoveTowards(transform.position, endPos.position, Time.deltaTime * speed);
 			}
 
 			if (moveAround)
@@ -54,11 +54,11 @@ namespace David
 		private void MoveAround()
 		{
 			float distance = (transform.position - ghostTarget).sqrMagnitude;
-			if (distance <= (0.2f * 0.2f))
+			if (distance <= 0.05f)
 			{
 				ghostTarget = GetNextTarget();
 			}
-			transform.position = Vector3.MoveTowards(transform.position, ghostTarget, Time.deltaTime * speed * 5);
+			transform.position = Vector3.MoveTowards(transform.position, ghostTarget, Time.deltaTime * speed * 0.75f);
 			Vector3 newDir = playerPos.position;
 			newDir.y = transform.GetChild(0).transform.position.y;
 			transform.GetChild(0).transform.LookAt(newDir, Vector3.up);

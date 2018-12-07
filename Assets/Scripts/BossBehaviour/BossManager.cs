@@ -5,7 +5,7 @@ using UnityEngine.AI;
 namespace David
 {
 	public class BossManager : GameEventListener
-	{		
+	{
 		[SerializeField] float chargeTimer;
 
 		public BossState state = BossState.Idle;
@@ -91,9 +91,6 @@ namespace David
 			else if (other.gameObject.CompareTag("Player") && state == BossState.Charge)
 			{
 				HitPlayer = true;
-				print("I need to do something here ._. (Charged into Player)");
-				//bool = active (wait for a short time and then start moving/attacking)
-				//Do lot's of damage and knock player prone
 			}
 		}
 
