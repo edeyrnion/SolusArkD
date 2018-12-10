@@ -1,83 +1,87 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
 using UnityEngine.UI;
+using TMPro;
 
 namespace David
 {
 	public class Lantern : MonoBehaviour
 	{
+		[SerializeField] BossManager bossManager;
 		[SerializeField] Light lanternLight;
-		[SerializeField] List<Image> energyPoints = new List<Image>();
+		[SerializeField] TextMeshProUGUI lanternUsesText;
+		[SerializeField] Image fillBar;
+		[SerializeField] ParticleSystem particles;
 		[SerializeField] GameObject ghost;
 
-		[SerializeField] float speed;
+		[SerializeField] float fillSpeed;
 
-		Image fillBar;
+		public int MaxLanternUses;
 
+		int lanternUses;
 		bool isActive;
-		int numberEnergyPoints;
-		int maxNumberOfEnergyPoints;
-
 
 		private void Start()
 		{
-			maxNumberOfEnergyPoints = energyPoints.Count;
-			numberEnergyPoints = maxNumberOfEnergyPoints;
-			fillBar = energyPoints[numberEnergyPoints - 1];
+			fillBar.fillAmount = 0.78f;
+			lanternUses = MaxLanternUses;
+			UpdateText();
 		}
 
 		private void Update()
 		{
 			if (Input.GetKeyDown(KeyCode.F))
 			{
+				if (!isActive)
+				{
+					if (lanternUses <= 0) { return; }
+					fillBar.fillAmount = 0.78f;
+					lanternUses--;
+					UpdateText();
+				}
+
 				LanternState();
 			}
 
 			if (isActive)
 			{
-				if (fillBar.fillAmount == 0)
+				if (particles.isPlaying == true) { particles.Stop(); }
+				fillBar.fillAmount -= Time.deltaTime * fillSpeed;
+				if (fillBar.fillAmount <= 0.185f)
 				{
-					numberEnergyPoints--;
-
-					if (numberEnergyPoints == 0)
-					{
-						LanternState();
-					}
-					else
-					{
-						fillBar = energyPoints[numberEnergyPoints - 1];
-					}
+					LanternState();
 				}
-				fillBar.fillAmount -= Time.deltaTime * speed;
 			}
 
 			if (!isActive)
 			{
-				if (fillBar.fillAmount == 1 && numberEnergyPoints == maxNumberOfEnergyPoints) { return; }
-				if (fillBar.fillAmount == 1)
+				if (fillBar.fillAmount >= 0.78f && lanternUses == MaxLanternUses) { return; }
+				if (particles.isPlaying == false) { particles.Play(); }
+
+				fillBar.fillAmount += Time.deltaTime * fillSpeed;
+				if (fillBar.fillAmount >= 0.78f)
 				{
-					numberEnergyPoints++;
-					fillBar = energyPoints[numberEnergyPoints - 1];
+					lanternUses++;
+					UpdateText();
+					if (lanternUses == MaxLanternUses)
+					{
+						if (particles.isPlaying == true) { particles.Stop(); }
+						return;
+					}
+					fillBar.fillAmount = 0.185f;
 				}
-				fillBar.fillAmount += Time.deltaTime * speed;
 			}
 		}
 
 		private void LanternState()
 		{
-			if (isActive == false)
-			{
-				if (fillBar.fillAmount <= 1 && numberEnergyPoints <= 1) { return; }
-				float amount = fillBar.fillAmount - 1f;
-				fillBar.fillAmount = 0f;
-				numberEnergyPoints--;
-				fillBar = energyPoints[numberEnergyPoints - 1];
-				if (amount < 0) { fillBar.fillAmount += amount; }
-			}
-
 			isActive = !isActive;
 			lanternLight.enabled = isActive;
-			ghost.SetActive(isActive);
+			if (bossManager.state == BossState.Prone) { ghost.SetActive(isActive); }
+		}
+
+		private void UpdateText()
+		{
+			lanternUsesText.text = $"x{lanternUses}";
 		}
 	}
 }

@@ -25,7 +25,7 @@ namespace David
 		public bool Charging = true;
 		public bool Break;
 		public bool HitPlayer;
-
+		
 
 		float time;
 
