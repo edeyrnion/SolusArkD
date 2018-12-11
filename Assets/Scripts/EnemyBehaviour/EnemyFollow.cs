@@ -20,6 +20,7 @@ namespace David
 		public void OnStateEnter()
 		{
 			print(manager.CurrentState);
+			agent.speed = manager.Stats.WalkingSpeed * 1.75f;
 			agent.isStopped = true;
 			LookingAtTarget = false;
 			wait = false;
@@ -28,7 +29,7 @@ namespace David
 		private void Start()
 		{
 			manager = GetComponent<EnemyManager>();
-			agent = GetComponent<NavMeshAgent>();
+			agent = GetComponent<NavMeshAgent>();			
 		}
 
 		void Update()
@@ -73,6 +74,10 @@ namespace David
 
 		void Follow()
 		{
+			if (manager.BanditController != null)
+			{
+				manager.BanditController.Move(agent.velocity.magnitude);
+			}
 			targetPos = manager.Player.transform.position;
 			agent.SetDestination(targetPos);
 			if (distance <= manager.AttackRadius) { manager.ChangeState(State.Attacking); }

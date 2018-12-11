@@ -16,9 +16,9 @@ namespace David
 		[SerializeField] float fillSpeed;
 
 		public int MaxLanternUses;
+		public bool isActive;
 
 		int lanternUses;
-		bool isActive;
 
 		private void Start()
 		{

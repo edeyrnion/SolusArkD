@@ -4,18 +4,27 @@ namespace David
 {
 	public class GhostBehaviour : MonoBehaviour
 	{
+		[SerializeField] GhostStats stats;
 		[SerializeField] Transform endPos;
 		[SerializeField] Transform center;
 		[SerializeField] Transform playerPos;
 
+		[SerializeField] float speed = 1f;
+
+		public int Health;
+
 		Vector3 ghostTarget;
 
-		[SerializeField] float speed = 1f;
 		float timer;
 
 		bool behave;
 		bool moveAround;
 
+
+		private void Start()
+		{
+			Health = stats.Health;
+		}
 
 		public void StartBehaviour()
 		{
@@ -28,6 +37,7 @@ namespace David
 			moveAround = false;
 			transform.localPosition = Vector3.zero;
 			transform.GetChild(0).localRotation = Quaternion.Euler(Vector3.zero);
+			transform.GetChild(0).gameObject.SetActive(false);
 			gameObject.SetActive(false);
 		}
 
@@ -37,11 +47,11 @@ namespace David
 			{
 				float distance = (transform.localPosition - endPos.localPosition).sqrMagnitude;
 				if (distance <= 0.05f)
-				{				
+				{
 					moveAround = true;
 					ghostTarget = GetNextTarget();
 					return;
-				}				
+				}
 				transform.position = Vector3.MoveTowards(transform.position, endPos.position, Time.deltaTime * speed);
 			}
 

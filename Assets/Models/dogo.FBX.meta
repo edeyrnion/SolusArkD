@@ -1,0 +1,161 @@
+fileFormatVersion: 2
+guid: 00aecdefca508b34789da7822b5c80c6
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Character001
+    100002: Character001BLLeg1
+    100004: Character001BLLeg2
+    100006: Character001BLLeg3
+    100008: Character001BLLegAnkle
+    100010: Character001BLLegPlatform
+    100012: Character001BRLeg1
+    100014: Character001BRLeg2
+    100016: Character001BRLeg3
+    100018: Character001BRLegAnkle
+    100020: Character001BRLegPlatform
+    100022: Character001Chest
+    100024: Character001FLLeg1
+    100026: Character001FLLeg2
+    100028: Character001FLLegAnkle
+    100030: Character001FLLegCollarbone
+    100032: Character001FLLegPlatform
+    100034: Character001FRLeg1
+    100036: Character001FRLeg2
+    100038: Character001FRLegAnkle
+    100040: Character001FRLegCollarbone
+    100042: Character001FRLegPlatform
+    100044: Character001Head
+    100046: Character001Pelvis
+    100048: Character001Spine1
+    100050: Character001Spine1 1
+    100052: Character001Spine2
+    100054: Character001Spine2 1
+    100056: Character001Spine3
+    100058: Character001Tail1
+    100060: Character001Tail2
+    100062: Character001Tail3
+    100064: Character001Tail4
+    100066: //RootNode
+    100068: "K\xF6rper"
+    400000: Character001
+    400002: Character001BLLeg1
+    400004: Character001BLLeg2
+    400006: Character001BLLeg3
+    400008: Character001BLLegAnkle
+    400010: Character001BLLegPlatform
+    400012: Character001BRLeg1
+    400014: Character001BRLeg2
+    400016: Character001BRLeg3
+    400018: Character001BRLegAnkle
+    400020: Character001BRLegPlatform
+    400022: Character001Chest
+    400024: Character001FLLeg1
+    400026: Character001FLLeg2
+    400028: Character001FLLegAnkle
+    400030: Character001FLLegCollarbone
+    400032: Character001FLLegPlatform
+    400034: Character001FRLeg1
+    400036: Character001FRLeg2
+    400038: Character001FRLegAnkle
+    400040: Character001FRLegCollarbone
+    400042: Character001FRLegPlatform
+    400044: Character001Head
+    400046: Character001Pelvis
+    400048: Character001Spine1
+    400050: Character001Spine1 1
+    400052: Character001Spine2
+    400054: Character001Spine2 1
+    400056: Character001Spine3
+    400058: Character001Tail1
+    400060: Character001Tail2
+    400062: Character001Tail3
+    400064: Character001Tail4
+    400066: //RootNode
+    400068: "K\xF6rper"
+    2100000: 02 - Default
+    4300000: "K\xF6rper"
+    9500000: //RootNode
+    13700000: "K\xF6rper"
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.0254
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

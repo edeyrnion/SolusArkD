@@ -11,14 +11,11 @@ namespace Matthias.Characters
 		private Vector3 _cameraForward;
 		private Vector3 _moveVector;
 		private bool _isSprinting;
-
-		//added by David
-		David.PlayerManager playerManager;
+		
 		float timer;
 
 		private void Start()
-		{
-			playerManager = GetComponent<David.PlayerManager>();
+		{			
 			if (_camera == null)
 			{
 				if (Camera.main != null)

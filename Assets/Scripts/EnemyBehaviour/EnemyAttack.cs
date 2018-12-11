@@ -56,6 +56,10 @@ namespace David
 			if (timer >= attackWaitTime)
 			{
 				timer = 0f;
+				if (manager.BanditController != null)
+				{
+					manager.BanditController.Attack();
+				}
 				manager.DealDamage(damage);
 			}
 		}

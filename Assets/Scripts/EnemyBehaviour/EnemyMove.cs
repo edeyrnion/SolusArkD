@@ -22,6 +22,7 @@ namespace David
 		public void OnStateEnter()
 		{
 			print(manager.CurrentState);
+			agent.speed = manager.Stats.WalkingSpeed;
 			LookingAtTarget = false;
 			IsMoving = false;
 		}
@@ -38,6 +39,10 @@ namespace David
 		{
 			if (manager.CurrentState == State.Patroling)
 			{
+				if (manager.BanditController != null)
+				{
+					manager.BanditController.Move(agent.velocity.magnitude);
+				}
 				if (manager.Detected) { CheckIfPlayerIsDetected(); }
 				if (IsMoving)
 				{

@@ -7,6 +7,7 @@ namespace David
 	{
 		[SerializeField] GameObject mainPanel;
 		[SerializeField] GameObject pausePanel;
+		[SerializeField] GameObject endScreenPanel;
 		[SerializeField] int sceneIndex;
 		[SerializeField] bool active;
 
@@ -14,6 +15,7 @@ namespace David
 
 		public void LoadGameScene()
 		{
+			endScreenPanel.SetActive(false);
 			mainPanel.SetActive(active);
 			pausePanel.SetActive(false);
 			SceneManager.LoadScene(sceneIndex);

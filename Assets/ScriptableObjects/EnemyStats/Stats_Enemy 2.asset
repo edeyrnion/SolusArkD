@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Name: Stats_Enemy 2
   m_EditorClassIdentifier: 
   Health: 10
-  Damage: 2
-  AttackWaitTime: 2.5
-  AlertRadius: 25
-  DetectionRadius: 10
-  WalkingSpeed: 5
+  Damage: 1
+  AttackWaitTime: 1
+  AlertRadius: 10
+  DetectionRadius: 3
+  WalkingSpeed: 1.5

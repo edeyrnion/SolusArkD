@@ -6,9 +6,10 @@ namespace David
 {
 	public class EnemyManager : MonoBehaviour
 	{
-		[SerializeField] EnemyStats stats;
+		public EnemyStats Stats;
 
 		public State CurrentState = State.Patroling;
+		public BanditController BanditController;
 		public GameObject Player;
 		public Color Color = Color.green;
 		public int Health;
@@ -30,18 +31,19 @@ namespace David
 
 		private void Awake()
 		{
+			BanditController = GetComponent<BanditController>();
 			enemyMove = GetComponent<EnemyMove>();
 			enemyInvestigate = GetComponent<EnemyInvestigate>();
 			enemyFollow = GetComponent<EnemyFollow>();
 			enemyAttack = GetComponent<EnemyAttack>();
 			agent = GetComponent<NavMeshAgent>();
 
-			Health = stats.Health;
-			Damage = stats.Damage;
-			AttackWaitTime = stats.AttackWaitTime;
-			DetectionRadius = stats.DetectionRadius;
-			AlertRadius = stats.AlertRadius;
-			agent.speed = stats.WalkingSpeed;
+			Health = Stats.Health;
+			Damage = Stats.Damage;
+			AttackWaitTime = Stats.AttackWaitTime;
+			DetectionRadius = Stats.DetectionRadius;
+			AlertRadius = Stats.AlertRadius;
+			agent.speed = Stats.WalkingSpeed;
 		}
 
 		private void Update()
@@ -83,6 +85,9 @@ namespace David
 				case State.Attacking:
 					enemyAttack.OnStateEnter();
 					break;
+				case State.Dead:
+					enabled = false;
+					break;
 				default:
 					break;
 			}
@@ -104,5 +109,5 @@ namespace David
 		}
 	}
 
-	public enum State { Patroling, Investigating, Following, Attacking }
+	public enum State { Patroling, Investigating, Following, Attacking, Dead }
 }

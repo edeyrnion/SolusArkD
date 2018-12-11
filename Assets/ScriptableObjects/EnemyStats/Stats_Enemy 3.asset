@@ -15,5 +15,5 @@ MonoBehaviour:
   Damage: 1
   AttackWaitTime: 1
   AlertRadius: 10
-  DetectionRadius: 5
-  WalkingSpeed: 20
+  DetectionRadius: 3
+  WalkingSpeed: 1.5
