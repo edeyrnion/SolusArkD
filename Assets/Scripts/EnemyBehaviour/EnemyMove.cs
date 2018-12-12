@@ -39,10 +39,8 @@ namespace David
 		{
 			if (manager.CurrentState == State.Patroling)
 			{
-				if (manager.BanditController != null)
-				{
-					manager.BanditController.Move(agent.velocity.magnitude);
-				}
+				manager.BanditController.Move(agent.velocity.magnitude);
+
 				if (manager.Detected) { CheckIfPlayerIsDetected(); }
 				if (IsMoving)
 				{

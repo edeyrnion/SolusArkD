@@ -5,20 +5,20 @@ namespace David
 {
 	public class EnemyMainManager : MonoBehaviour
 	{
-		[SerializeField] List<GameObject> enemies;
+		public List<GameObject> Enemies;
 		public List<bool> Alerted;
 
 
 		private void Update()
 		{
-			for (int i = 0; i < enemies.Count; i++)
+			for (int i = 0; i < Enemies.Count; i++)
 			{
-				if (enemies[i] == null)
+				if (Enemies[i] == null)
 				{
-					enemies.Remove(enemies[i]);
+					Enemies.Remove(Enemies[i]);
 					continue;
 				}
-				EnemyManager manager = enemies[i].GetComponent<EnemyManager>();
+				EnemyManager manager = Enemies[i].GetComponent<EnemyManager>();
 				if (manager.CurrentState == State.Following || manager.CurrentState == State.Attacking)
 				{
 					Alerted[i] = true;
@@ -28,17 +28,17 @@ namespace David
 
 			if (Alerted.Contains(true))
 			{
-				for (int i = 0; i < enemies.Count; i++)
+				for (int i = 0; i < Enemies.Count; i++)
 				{
-					EnemyManager manager = enemies[i].GetComponent<EnemyManager>();
+					EnemyManager manager = Enemies[i].GetComponent<EnemyManager>();
 					manager.OtherEnemyIsAlerted = true;
 				}
 			}
 			else
 			{
-				for (int i = 0; i < enemies.Count; i++)
+				for (int i = 0; i < Enemies.Count; i++)
 				{
-					EnemyManager manager = enemies[i].GetComponent<EnemyManager>();
+					EnemyManager manager = Enemies[i].GetComponent<EnemyManager>();
 					manager.OtherEnemyIsAlerted = false;
 				}
 			}

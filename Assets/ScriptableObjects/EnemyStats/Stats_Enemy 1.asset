@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 10
   Damage: 1
-  AttackWaitTime: 1
+  AttackWaitTime: 2
   AlertRadius: 10
   DetectionRadius: 3
   WalkingSpeed: 1.5

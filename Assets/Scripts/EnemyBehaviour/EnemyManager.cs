@@ -66,6 +66,7 @@ namespace David
 		public void DealDamage(int damage)
 		{
 			Player.GetComponent<PlayerManager>().Stats.Health -= damage;
+			Player.GetComponent<PlayerManager>().UpdateHealthBar();
 		}
 
 		public void ChangeState(State state)

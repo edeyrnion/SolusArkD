@@ -18,8 +18,7 @@ namespace David
 		IEnumerator coroutine;
 
 		public void OnStateEnter()
-		{
-			print(manager.CurrentState);
+		{			
 			agent.speed = manager.Stats.WalkingSpeed * 1.75f;
 			agent.isStopped = true;
 			LookingAtTarget = false;

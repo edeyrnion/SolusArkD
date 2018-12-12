@@ -33,7 +33,7 @@ namespace David
 		public void DoDamage(int damage)
 		{
 			manager.target.GetComponent<PlayerManager>().Stats.Health -= damage;
-
+			manager.target.GetComponent<PlayerManager>().UpdateHealthBar();
 		}
 	}
 }
