@@ -31,20 +31,18 @@ namespace David
 			{
 				targetPos = manager.Player.transform.position;
 				float distance = (transform.position - targetPos).magnitude;
-				if (distance <= manager.AttackRadius * 1.5f) { Attack(); return; }
-				else
+				if (distance <= manager.AttackRadius)
+				{
+					agent.velocity = Vector3.zero;
+					agent.isStopped = true;
+					manager.BanditController.Attack();
+				}
+				else if (distance >= manager.AttackRadius * 1.5f)
 				{
 					print("test");
-					manager.ChangeState(State.Following);				
+					manager.ChangeState(State.Following);
 				}
 			}
 		}
-
-		void Attack()
-		{
-			agent.velocity = Vector3.zero;
-			agent.isStopped = true;
-			manager.BanditController.Attack();
-		}	
 	}
 }

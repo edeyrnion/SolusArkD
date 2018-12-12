@@ -1,56 +1,73 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
+using UnityEngine.Events;
 
 [DisallowMultipleComponent]
 [RequireComponent(typeof(Animator))]
 public class BanditController : MonoBehaviour
 {
-	public bool Attacking;
+	[SerializeField] David.WeaponTrigger trigger;
+	public UnityEvent SwordHit;
+	public UnityEvent DeathSound;
 
 	Animator anim;
 	Rigidbody rb;
 
 	float lastTime;
-	float attackTimer;	
-
+	float attackTimer;
+	bool wait;
 
 	private void Awake()
 	{
 		anim = GetComponent<Animator>();
-	}
-
-	private void Update()
-	{
-		var move = Input.GetAxis("Vertical");
-
-		Move(move);
-	}
+	}	
 
 	public void Attack()
 	{
-		attackTimer += Time.deltaTime;
+		if (!wait)
+		{
+			attackTimer += Time.deltaTime;
 
-		if (anim.GetCurrentAnimatorStateInfo(0).IsName("Movement"))
-		{			
-			if (attackTimer >= 1f)
+			if (anim.GetCurrentAnimatorStateInfo(0).IsName("Movement"))
 			{
-				if (Random.Range(0, 2) > 0)
+				if (attackTimer >= 1f)
 				{
-					anim.SetTrigger("Attack1");
-					Attacking = true;
+					if (Random.Range(0, 2) > 0)
+					{
+						anim.SetTrigger("Attack1");
+					}
+					else
+					{
+						anim.SetTrigger("Attack2");
+					}
+					attackTimer = 0f;
+					wait = true;
+					SwordHit.Invoke();
+					IEnumerator coroutine = Wait(0.5f);
+					StartCoroutine(coroutine);
 				}
-				else
-				{
-					anim.SetTrigger("Attack2");
-					Attacking = true;
-				}				
-				attackTimer = 0f;
 			}
 		}
+	}
+
+	IEnumerator Wait(float time)
+	{
+		yield return new WaitForSeconds(time);
+		trigger.GetComponent<Collider>().enabled = true;
+		wait = false;
 	}
 
 	public void Death()
 	{
 		anim.SetTrigger("Death");
+		IEnumerator coroutine = Dead(2f);
+		StartCoroutine(coroutine);
+	}
+
+	IEnumerator Dead(float time)
+	{
+		yield return new WaitForSeconds(time);
+		DeathSound.Invoke();
 	}
 
 	public void Move(float speed)

@@ -3802,6 +3802,8 @@ GameObject:
   m_Component:
   - component: {fileID: 890700760}
   - component: {fileID: 890700759}
+  - component: {fileID: 890700758}
+  - component: {fileID: 890700761}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -3809,6 +3811,34 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &890700758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 890700757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0821ba712debd014395825a13a1dd4b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 800c4525f7c2e2249aa3aef1b22cff0b, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 890700759}
+        m_MethodName: PlaySwordHitSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &890700759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3841,6 +3871,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ba4ccdb76ad19464bb3d76de33e52b02, type: 3}
   sfxClips:
   - {fileID: 8300000, guid: cd7044bf418f642df9a2130900bd3fd5, type: 3}
+  - {fileID: 8300000, guid: d32c1043331352d44ab743d1ea49e5d8, type: 3}
+  - {fileID: 8300000, guid: 3248a0bcbb33df64eb83ee4e6033572b, type: 3}
   ambienceClips:
   - {fileID: 8300000, guid: cd7044bf418f642df9a2130900bd3fd5, type: 3}
   dialogueClips: []
@@ -3864,6 +3896,34 @@ Transform:
   m_Father: {fileID: 552282676}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &890700761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 890700757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fd6efa630c641d47b7d1146cf642b53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 6fcd4af3fe8d41b4bafdea7039b2ac1b, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 890700759}
+        m_MethodName: PlayDeathSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &904188562
 GameObject:
   m_ObjectHideFlags: 0

@@ -39,10 +39,8 @@ namespace David
 		{
 			if (manager.CurrentState == State.Investigating)
 			{
-				if (manager.BanditController != null)
-				{
-					manager.BanditController.Move(agent.velocity.magnitude);
-				}
+				manager.BanditController.Move(agent.velocity.magnitude);
+
 				Vector3 playerPos = manager.Player.transform.position;
 				distanceToPlayer = (transform.position - playerPos).magnitude;
 				if (!LookingAtTarget) { LookAtTarget(); }

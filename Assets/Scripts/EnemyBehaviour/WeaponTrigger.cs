@@ -8,12 +8,17 @@ namespace David
 		[SerializeField] BanditController banditController;
 
 
+		private void Start()
+		{
+			GetComponent<Collider>().enabled = false;
+		}
+
 		private void OnTriggerEnter(Collider other)
-		{			
-			if (other.gameObject.CompareTag("Player") && banditController.Attacking)
+		{
+			if (other.gameObject.CompareTag("Player"))
 			{
 				manager.DealDamage(manager.Damage);
-				banditController.Attacking = false;				
+				GetComponent<Collider>().enabled = false;
 			}
 		}
 	}

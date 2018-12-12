@@ -13,23 +13,29 @@ namespace David
 		[SerializeField] AudioSource sfxSource;
 		[SerializeField] Slider musicVolumeSlider;
 
-		bool enableAudio;
-
 
 		private void Start()
 		{
 			musicSource.clip = musicClips[0];
-			sfxSource.clip = sfxClips[0];
 			musicSource.Play();
-			enableAudio = true;		
 		}
 
 		public void PlayClickSound()
 		{
-			if (enableAudio)
-			{
-				sfxSource.PlayOneShot(sfxSource.clip);
-			}
+			sfxSource.clip = sfxClips[0];
+			sfxSource.PlayOneShot(sfxSource.clip);
+		}
+
+		public void PlaySwordHitSound()
+		{
+			sfxSource.clip = sfxClips[1];
+			sfxSource.PlayOneShot(sfxSource.clip);
+		}
+
+		public void PlayDeathSound()
+		{
+			sfxSource.clip = sfxClips[2];
+			sfxSource.PlayOneShot(sfxSource.clip);
 		}
 	}
 }

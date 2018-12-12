@@ -48,10 +48,11 @@ namespace David
 			if (Stats.Health == 30) { return; }
 			for (int i = 0; i < enemyList.Count; i++)
 			{
-				if (enemyList[i].GetComponent<EnemyManager>().CurrentState != State.Patroling) { return; }
+				if (enemyList[i].GetComponent<EnemyManager>().CurrentState == State.Patroling || enemyList[i].GetComponent<EnemyManager>().CurrentState == State.Dead) { continue; }
+				else { return; }
 			}
 			regenTimer += Time.deltaTime;
-			if (regenTimer >= 1)
+			if (regenTimer >= 5f)
 			{
 				regenTimer = 0f;
 				Stats.Health++;
