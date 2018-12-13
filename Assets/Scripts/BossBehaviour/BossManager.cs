@@ -25,7 +25,7 @@ namespace David
 		public bool Charging = true;
 		public bool Break;
 		public bool HitPlayer;
-		
+
 
 		float time;
 
@@ -46,6 +46,7 @@ namespace David
 
 		private void Update()
 		{
+			if (state == BossState.Attack) { return; }
 			if (!Charging)
 			{
 				time += Time.deltaTime;
@@ -92,6 +93,12 @@ namespace David
 			{
 				HitPlayer = true;
 			}
+		}
+
+		public void DoDamage(int damage)
+		{
+			target.GetComponent<PlayerManager>().Stats.Health -= damage;
+			target.GetComponent<PlayerManager>().UpdateHealthBar();
 		}
 
 		private void OnDrawGizmos()

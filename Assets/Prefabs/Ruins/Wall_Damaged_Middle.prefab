@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4407288081518694}
   - component: {fileID: 33825857580058056}
   - component: {fileID: 23866627169730586}
+  - component: {fileID: 65518828591953566}
   m_Layer: 0
   m_Name: Wall_Damaged_Middle
   m_TagString: Untagged
@@ -35,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1595556283456452}
   m_LocalRotation: {x: -0.65077215, y: 0.27657846, z: 0.27657846, w: 0.65077215}
-  m_LocalPosition: {x: 237.68, y: 39.993, z: 306.15}
+  m_LocalPosition: {x: 159.4703, y: 60.007324, z: 12.103396}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -83,3 +84,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1595556283456452}
   m_Mesh: {fileID: 4300000, guid: 63ba141cfe2d02940b706cabda3fe590, type: 3}
+--- !u!65 &65518828591953566
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1595556283456452}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.8136704, y: 4.0000005, z: 3.077778}
+  m_Center: {x: 0, y: 0, z: 1.538889}

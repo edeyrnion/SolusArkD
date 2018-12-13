@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4242312157167870}
   - component: {fileID: 33860448211112766}
   - component: {fileID: 23680770800492362}
+  - component: {fileID: 136916242032172282}
   m_Layer: 0
   m_Name: Pillar_Boss_Broken
   m_TagString: Untagged
@@ -35,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1646247407961480}
   m_LocalRotation: {x: -0.6185144, y: -0.34269512, z: -0.34269512, w: 0.6185144}
-  m_LocalPosition: {x: 327.399, y: 51.91, z: 387.821}
+  m_LocalPosition: {x: 159.26994, y: 60.007324, z: 18.786709}
   m_LocalScale: {x: 1.3085821, y: 1.3085821, z: 1.172554}
   m_Children: []
   m_Father: {fileID: 0}
@@ -83,3 +84,16 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1646247407961480}
   m_Mesh: {fileID: 4300000, guid: dd8bdd4479740b547b782a0c5d88184a, type: 3}
+--- !u!136 &136916242032172282
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1646247407961480}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.84
+  m_Height: 6.65
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 2.27}

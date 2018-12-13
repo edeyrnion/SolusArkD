@@ -1,12 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace David
 {
 	public class BossAttack : MonoBehaviour
 	{
 		BossManager manager;
+		BossController controller;
 
 		float timer;
 
@@ -14,6 +13,7 @@ namespace David
 		private void Start()
 		{
 			manager = GetComponent<BossManager>();
+			controller = GetComponent<BossController>();
 			timer = manager.AttackTimer;
 		}
 
@@ -21,19 +21,8 @@ namespace David
 		{
 			if (manager.state != BossState.Attack) { return; }
 			manager.CheckDistanceToTarget();
-			timer += Time.deltaTime;
-			if (timer >= manager.AttackTimer)
-			{
-				timer = 0f;
-				DoDamage(manager.Damage);
-			}
-
-		}
-
-		public void DoDamage(int damage)
-		{
-			manager.target.GetComponent<PlayerManager>().Stats.Health -= damage;
-			manager.target.GetComponent<PlayerManager>().UpdateHealthBar();
+			controller.Move(0f);
+			controller.Attack();
 		}
 	}
 }

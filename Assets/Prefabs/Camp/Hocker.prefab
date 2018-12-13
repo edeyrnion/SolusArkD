@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4595209230328546}
+  - component: {fileID: 136283257959914262}
   m_Layer: 0
   m_Name: Hocker
   m_TagString: Untagged
@@ -153,7 +154,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1077078442681500}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 172.753, y: 39.997, z: 280.877}
+  m_LocalPosition: {x: 149.6984, y: 60.007324, z: 14.3018055}
   m_LocalScale: {x: 0.7651734, y: 0.7651734, z: 0.7651734}
   m_Children:
   - {fileID: 4027320304859992}
@@ -331,3 +332,16 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1922787716673018}
   m_Mesh: {fileID: 4300004, guid: e6d37e474ebcb704bb08b92885f43944, type: 3}
+--- !u!136 &136283257959914262
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1077078442681500}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1.12
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.38, z: 0}

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4504610937043936}
   - component: {fileID: 33367655138702102}
   - component: {fileID: 23197733073571168}
+  - component: {fileID: 65037820890253876}
   m_Layer: 0
   m_Name: Sack_3
   m_TagString: Untagged
@@ -35,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1031551145079246}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 169.37, y: 39.941, z: 280.94}
+  m_LocalPosition: {x: 150.92834, y: 60.007324, z: 15.902958}
   m_LocalScale: {x: 0.48655, y: 0.48655, z: 0.48655}
   m_Children: []
   m_Father: {fileID: 0}
@@ -83,3 +84,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1031551145079246}
   m_Mesh: {fileID: 4300000, guid: bc0dff297d8d534418843cd5ff5576fc, type: 3}
+--- !u!65 &65037820890253876
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1031551145079246}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.4668661, y: 1.026186, z: 1.410319}
+  m_Center: {x: 0.002181649, y: 0.000892699, z: 0.7023681}

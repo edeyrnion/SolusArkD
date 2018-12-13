@@ -9,6 +9,7 @@ namespace David
 		[SerializeField] float proneTimer;
 
 		BossManager manager;
+		BossController controller;
 
 		float time;
 
@@ -16,11 +17,12 @@ namespace David
 		private void Start()
 		{
 			manager = GetComponent<BossManager>();
+			controller = GetComponent<BossController>();
 		}
 
 		private void Update()
 		{
-			if (manager.state != BossState.Prone) { return; }
+			if (manager.state != BossState.Prone) { return; }			
 			time += Time.deltaTime;
 			if (time >= proneTimer)
 			{
@@ -30,6 +32,7 @@ namespace David
 				manager.Charging = false;
 				manager.agent.isStopped = false;
 				manager.ghostBehaviour.StopBehaviour();
+				controller.StandUp();
 				manager.state = BossState.Follow;
 			}
 		}

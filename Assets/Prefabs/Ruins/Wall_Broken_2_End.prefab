@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4074791185027086}
   - component: {fileID: 33916285006654700}
   - component: {fileID: 23971531548830136}
+  - component: {fileID: 65250773024526206}
   m_Layer: 0
   m_Name: Wall_Broken_2_End
   m_TagString: Untagged
@@ -35,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1803608255285218}
   m_LocalRotation: {x: -0.65077215, y: 0.27657846, z: 0.27657846, w: 0.65077215}
-  m_LocalPosition: {x: 234.80023, y: 39.993, z: 303.3739}
+  m_LocalPosition: {x: 158.98282, y: 60.007324, z: 13.422668}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -83,3 +84,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1803608255285218}
   m_Mesh: {fileID: 4300000, guid: 35296e3f041fa7b48ab7f129ba103e46, type: 3}
+--- !u!65 &65250773024526206
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1803608255285218}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.8136704, y: 4.119548, z: 3}
+  m_Center: {x: 0.0000000017813946, y: 0.05977369, z: 1.5}

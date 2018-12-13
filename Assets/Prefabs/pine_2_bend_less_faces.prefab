@@ -427,6 +427,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4206828491279134}
+  - component: {fileID: 136656265859578310}
   m_Layer: 0
   m_Name: pine_2_bend_less_faces
   m_TagString: Untagged
@@ -625,7 +626,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1772224800943700}
   m_LocalRotation: {x: -0, y: -0.772992, z: -0, w: 0.6344158}
-  m_LocalPosition: {x: 90.75, y: 20.060684, z: 111.64}
+  m_LocalPosition: {x: 151.65614, y: 60.007324, z: 13.097711}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4145830065633976}
@@ -2302,3 +2303,16 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1145043716352936}
   m_Mesh: {fileID: 4300038, guid: e901480335e90114785870ec5bded975, type: 3}
+--- !u!136 &136656265859578310
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1772224800943700}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.66
+  m_Height: 4.63
+  m_Direction: 1
+  m_Center: {x: 0.13, y: 1.6, z: 0}

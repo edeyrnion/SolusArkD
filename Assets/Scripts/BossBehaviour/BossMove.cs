@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 namespace David
@@ -9,11 +7,13 @@ namespace David
 	{
 		BossManager manager;
 		NavMeshAgent agent;
+		BossController controller;
 
 
 		private void Start()
 		{
 			manager = GetComponent<BossManager>();
+			controller = GetComponent<BossController>();
 			agent = manager.agent;
 		}
 
@@ -22,6 +22,7 @@ namespace David
 			if (manager.state != BossState.Follow) { return; }
 			manager.CheckDistanceToTarget();
 			agent.SetDestination(manager.target.transform.position);
+			controller.Move(agent.velocity.magnitude);
 		}
 	}
 }

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4487867397506622}
   - component: {fileID: 33873768065552742}
   - component: {fileID: 23050484976458768}
+  - component: {fileID: 65958590463055512}
   m_Layer: 0
   m_Name: Kiste
   m_TagString: Untagged
@@ -35,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1340346493997600}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 169.218, y: 39.991, z: 281.659}
+  m_LocalPosition: {x: 151.53683, y: 60.007324, z: 17.896603}
   m_LocalScale: {x: 0.4666616, y: 0.4666616, z: 0.4666616}
   m_Children: []
   m_Father: {fileID: 0}
@@ -83,3 +84,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1340346493997600}
   m_Mesh: {fileID: 4300000, guid: 489f45f25630cc1409c17319e3474cde, type: 3}
+--- !u!65 &65958590463055512
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1340346493997600}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.3384023, y: 1.3384026, z: 1.3384026}
+  m_Center: {x: 0, y: 0, z: 0.6692013}

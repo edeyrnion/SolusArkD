@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4624063436439776}
+  - component: {fileID: 136507246655591806}
   m_Layer: 0
   m_Name: pine_1_less_faces
   m_TagString: Untagged
@@ -692,7 +693,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1080108197507892}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 57.417942, y: -0.01, z: 59.43825}
+  m_LocalPosition: {x: 152.75133, y: 60.007324, z: 19.28539}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4189116836466650}
@@ -1864,3 +1865,16 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1980304551349560}
   m_Mesh: {fileID: 4300022, guid: 3d63fd6fcc2a8654ab2793dccacdfe26, type: 3}
+--- !u!136 &136507246655591806
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1080108197507892}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.62
+  m_Height: 4.63
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.68, z: 0}

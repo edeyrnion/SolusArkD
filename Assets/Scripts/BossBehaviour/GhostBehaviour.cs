@@ -8,10 +8,9 @@ namespace David
 		[SerializeField] Transform endPos;
 		[SerializeField] Transform center;
 		[SerializeField] Transform playerPos;
-
 		[SerializeField] float speed = 1f;
 
-		public int Health;
+		public int Health;	
 
 		Vector3 ghostTarget;
 
@@ -42,7 +41,7 @@ namespace David
 		}
 
 		private void Update()
-		{
+		{			
 			if (behave && !moveAround)
 			{
 				float distance = (transform.localPosition - endPos.localPosition).sqrMagnitude;

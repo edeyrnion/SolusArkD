@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4688992176239750}
   - component: {fileID: 33177087141284286}
   - component: {fileID: 23324722222649446}
+  - component: {fileID: 64523331501121684}
   m_Layer: 0
   m_Name: Stone_4
   m_TagString: Untagged
@@ -35,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1062878412691024}
   m_LocalRotation: {x: 0.000000053385072, y: 0.7071067, z: 0.7071068, w: 0.000000053385083}
-  m_LocalPosition: {x: 2.8643494, y: 0.4499143, z: -0.15445709}
+  m_LocalPosition: {x: 138.09245, y: 60.716, z: 10.218445}
   m_LocalScale: {x: 2.789875, y: 2.789875, z: 2.789875}
   m_Children: []
   m_Father: {fileID: 0}
@@ -83,3 +84,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1062878412691024}
   m_Mesh: {fileID: 4300000, guid: c83f0ab52edc5634b88bb82a27d6787e, type: 3}
+--- !u!64 &64523331501121684
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1062878412691024}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 7f42347fb82a3df438503cae4d377877, type: 3}

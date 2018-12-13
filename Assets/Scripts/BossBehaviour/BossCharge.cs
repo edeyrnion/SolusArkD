@@ -11,6 +11,7 @@ namespace David
 		[SerializeField] float force;
 
 		BossManager manager;
+		BossController controller;
 
 		Vector3 chargeTarget;
 
@@ -25,6 +26,7 @@ namespace David
 		private void Start()
 		{
 			manager = GetComponent<BossManager>();
+			controller = GetComponent<BossController>();
 		}
 
 		private void Update()
@@ -34,11 +36,13 @@ namespace David
 			if (manager.state != BossState.Charge) { return; }
 			if (!charging)
 			{
+				//controller.Battlecry();
 				time += Time.deltaTime;
 				if (time >= waitTime)
 				{
 					time = 0f;
 					charging = true;
+					controller.Charge(0.1f);
 				}
 			}
 
@@ -48,6 +52,7 @@ namespace David
 				{
 					chargeTime = 0f;
 					charging = false;
+					controller.Stunned();
 					manager.state = BossState.Prone;
 					Debug.Log("Knocked Prone!");
 					return;
@@ -58,14 +63,16 @@ namespace David
 					manager.HitPlayer = false;
 					chargeTime = 0f;
 					charging = false;
-					manager.BossAttack.DoDamage(manager.ChargeDamage);
+					manager.DoDamage(manager.ChargeDamage);
 					knockBack = true;
 					Debug.Log("Did Charge Damage!");
+					controller.BackToMove();
+					controller.Move(0f);
 					manager.state = BossState.Follow;
 					return;
 				}
 
-				float chargeTimer = 1f;
+				float chargeTimer = 0.75f;
 				if (chargeTime >= chargeTimer) { return; }
 
 				transform.position += transform.forward * Time.deltaTime * chargeSpeed;
@@ -73,6 +80,8 @@ namespace David
 				chargeTime += Time.deltaTime;
 				if (chargeTime >= chargeTimer)
 				{
+					controller.BackToMove();
+					controller.Move(0f);
 					IEnumerator coroutine = Wait(2f);
 					StartCoroutine(coroutine);
 				}
