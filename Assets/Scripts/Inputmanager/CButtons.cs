@@ -8,5 +8,6 @@
         ToggleLight,
         Walk,
         Crouch,
+        Pause,
     }
 }

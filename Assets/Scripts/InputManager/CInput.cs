@@ -42,6 +42,7 @@ namespace Matthias
                 {(int)CButton.ToggleLight, ControllerButton.Action_Left },
                 {(int)CButton.Walk, ControllerButton.LBumper },
                 {(int)CButton.Crouch, ControllerButton.LTrigger },
+                {(int)CButton.Pause, ControllerButton.Start },
             };
         }
 
@@ -63,6 +64,7 @@ namespace Matthias
                 { (int)CButton.ToggleLight, "Toggle Light" },
                 { (int)CButton.Walk, "Walk" },
                 { (int)CButton.Crouch, "Crouch" },
+                { (int)CButton.Pause, "Pause" },
             };
         }
 
