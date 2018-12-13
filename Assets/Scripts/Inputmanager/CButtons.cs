@@ -4,5 +4,9 @@
     public enum CButton
     {
         Jump,
+        Attack,
+        ToggleLight,
+        Walk,
+        Crouch,
     }
 }

@@ -14,6 +14,8 @@ namespace Matthias
 
         private static ControllerInput controllerInput;
 
+        private static float camRotationAdjSpeed = 70f; // To align controller camera rotation speed to mouse speed. 
+
         static CInput()
         {
             controllerInput = new ControllerInput();
@@ -22,6 +24,7 @@ namespace Matthias
             KeyBindings();
         }
 
+        // Controller Bindings
         private static void ControllerBindings()
         {
             controllerAxes = new Dictionary<int, ControllerAxis>
@@ -35,9 +38,14 @@ namespace Matthias
             controllerButtons = new Dictionary<int, ControllerButton>
             {
                 {(int)CButton.Jump, ControllerButton.Action_Right },
+                {(int)CButton.Attack, ControllerButton.RBumper },
+                {(int)CButton.ToggleLight, ControllerButton.Action_Left },
+                {(int)CButton.Walk, ControllerButton.LBumper },
+                {(int)CButton.Crouch, ControllerButton.LTrigger },
             };
         }
 
+        // Keyboard/Mouse Bindings
         private static void KeyBindings()
         {
             axes = new Dictionary<int, string>
@@ -51,6 +59,10 @@ namespace Matthias
             buttons = new Dictionary<int, string>
             {
                 { (int)CButton.Jump, "Jump" },
+                { (int)CButton.Attack, "Attack" },
+                { (int)CButton.ToggleLight, "Toggle Light" },
+                { (int)CButton.Walk, "Walk" },
+                { (int)CButton.Crouch, "Crouch" },
             };
         }
 
@@ -63,7 +75,7 @@ namespace Matthias
 
             if (axisName == CAxis.CameraHorizontal || axisName == CAxis.CameraVertical)
             {
-                float value1 = controllerInput.GetAxis(controllerAxes[(int)axisName]) * Time.deltaTime * 70f;
+                float value1 = controllerInput.GetAxis(controllerAxes[(int)axisName]) * Time.deltaTime * camRotationAdjSpeed;
                 float value2 = Input.GetAxis(axes[(int)axisName]);
 
                 if (Mathf.Abs(value1) > Mathf.Abs(value2))
