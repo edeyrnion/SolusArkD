@@ -9,44 +9,44 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1267042453415436}
+  m_RootGameObject: {fileID: 1857745870735428}
   m_IsPrefabAsset: 1
---- !u!1 &1267042453415436
+--- !u!1 &1857745870735428
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4783184543978442}
-  - component: {fileID: 33315032949139938}
-  - component: {fileID: 23435158004393368}
+  - component: {fileID: 4528414372106386}
+  - component: {fileID: 33798431034324014}
+  - component: {fileID: 23452760729060372}
   m_Layer: 0
-  m_Name: Hero_Sword
+  m_Name: Tombstone_2_broken
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4783184543978442
+--- !u!4 &4528414372106386
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1267042453415436}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 113.87347, y: 20.174564, z: 116.40019}
-  m_LocalScale: {x: 0.004076363, y: 0.0050166235, z: 0.0050166235}
+  m_GameObject: {fileID: 1857745870735428}
+  m_LocalRotation: {x: -0.5000247, y: -0.49997532, z: -0.49997532, w: 0.5000247}
+  m_LocalPosition: {x: 301.42017, y: 14.97, z: 122.84008}
+  m_LocalScale: {x: 0.610726, y: 0.6107142, z: 0.6107142}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23435158004393368
+  m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: -89.994}
+--- !u!23 &23452760729060372
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1267042453415436}
+  m_GameObject: {fileID: 1857745870735428}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -56,7 +56,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: a5a8b1ec8cdd55d4ebae4ad9fe1ca322, type: 2}
+  - {fileID: 2100000, guid: 5b14af6a12b07e44d8e9d71c71f85a83, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -76,10 +76,10 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33315032949139938
+--- !u!33 &33798431034324014
 MeshFilter:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1267042453415436}
-  m_Mesh: {fileID: 4300000, guid: 801824e99700002499c9144d66aeaaa2, type: 3}
+  m_GameObject: {fileID: 1857745870735428}
+  m_Mesh: {fileID: 4300000, guid: 46b771855daf97e4aaca4527c6652e6a, type: 3}
