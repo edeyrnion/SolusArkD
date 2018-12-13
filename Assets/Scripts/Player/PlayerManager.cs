@@ -12,8 +12,7 @@ namespace David
 		[SerializeField] Image healthBar;
 
 		public PlayerStats Stats;
-
-		AttackZone attackZone;
+		
 		GameObject endScreen;
 		List<GameObject> enemyList;
 		TextMeshProUGUI text;
@@ -29,8 +28,7 @@ namespace David
 			Stats.Health = 30;
 			endScreenActive = false;
 			endScreen = Stats.EndScreen;
-			text = endScreen.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-			attackZone = transform.GetChild(0).GetComponent<AttackZone>();
+			text = endScreen.transform.GetChild(0).GetComponent<TextMeshProUGUI>();		
 
 			enemyList = enemyMain.Enemies;
 		}
@@ -38,8 +36,6 @@ namespace David
 		private void Update()
 		{
 			LifeRegen();
-			timer += Time.deltaTime;
-			if (timer >= Stats.AttackTimer && Input.GetKeyDown(KeyCode.Mouse0)) { CheckIfEnemiesInReach(); }
 			if (Stats.Health <= 0) { OpenEndScreen("Game Over!"); }
 		}
 
@@ -60,37 +56,19 @@ namespace David
 			}
 		}
 
-		public void CheckIfEnemiesInReach()
-		{
-			timer = 0f;
-			var enemies = attackZone.enemies;
-			if (enemies.Count == 0) { return; }
-
-			for (int i = 0; i < enemies.Count; i++)
-			{
-				if (enemies[i].name == "Ghost")
-				{
-					if (!lantern.isActive) { continue; }
-					AttackGhost(enemies[i], Stats.Damage);
-					continue;
-				}
-				Attack(enemies[i], Stats.Damage);
-			}
-		}
-
-		public void Attack(GameObject target, int damage)
+		public void DoDamage(GameObject target, int damage)
 		{
 			target.GetComponent<EnemyManager>().Health -= damage;
 
 			if (target.GetComponent<EnemyManager>().Health <= 0)
 			{
-				target.GetComponent<BanditController>().Death();
-				attackZone.enemies.Remove(target);
+				target.GetComponent<BanditController>().Death();			
+				print("test");
 				target.GetComponent<EnemyManager>().ChangeState(State.Dead);
 			}
 		}
 
-		void AttackGhost(GameObject target, int damage)
+		public void AttackGhost(GameObject target, int damage)
 		{
 			target.GetComponent<GhostBehaviour>().Health -= damage;
 

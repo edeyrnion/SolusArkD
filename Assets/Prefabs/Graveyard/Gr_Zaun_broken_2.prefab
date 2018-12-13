@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4083816266951616}
   - component: {fileID: 33551350729385640}
   - component: {fileID: 23114021238527374}
+  - component: {fileID: 65067830358849624}
   m_Layer: 0
   m_Name: Gr_Zaun_broken_2
   m_TagString: Untagged
@@ -35,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1598426224181952}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 308.5, y: 14.989, z: 127.09}
+  m_LocalPosition: {x: 139.01692, y: 60.007324, z: 12.463631}
   m_LocalScale: {x: 1.0822974, y: 1.0822974, z: 1.0822974}
   m_Children: []
   m_Father: {fileID: 0}
@@ -83,3 +84,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1598426224181952}
   m_Mesh: {fileID: 4300000, guid: 2c651017cff42164e88c5fba5236ed53, type: 3}
+--- !u!65 &65067830358849624
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1598426224181952}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.13635537, y: 1.6807325, z: 1.6250075}
+  m_Center: {x: -0.014717681, y: -0.27467132, z: 0.8125226}

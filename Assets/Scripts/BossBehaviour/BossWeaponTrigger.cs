@@ -4,8 +4,7 @@ namespace David
 {
 	public class BossWeaponTrigger : MonoBehaviour
 	{
-		[SerializeField] BossManager manager;
-		[SerializeField] BossController bossController;
+		[SerializeField] BossManager manager;	
 
 
 		private void Start()

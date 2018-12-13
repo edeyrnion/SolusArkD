@@ -75,8 +75,8 @@ namespace David
 
 		private Vector3 GetNextTarget()
 		{
-			float x = Random.Range(-40, 50);
-			float z = Random.Range(-35, 30);
+			float x = Random.Range(-13, 13);
+			float z = Random.Range(-13, 13);
 			return new Vector3(center.transform.position.x + x, transform.position.y, center.transform.position.z + z);
 		}
 	}

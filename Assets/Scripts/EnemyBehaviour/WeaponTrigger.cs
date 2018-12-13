@@ -4,8 +4,7 @@ namespace David
 {
 	public class WeaponTrigger : MonoBehaviour
 	{
-		[SerializeField] EnemyManager manager;
-		[SerializeField] BanditController banditController;
+		[SerializeField] EnemyManager manager;		
 
 
 		private void Start()

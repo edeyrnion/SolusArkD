@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4528414372106386}
   - component: {fileID: 33798431034324014}
   - component: {fileID: 23452760729060372}
+  - component: {fileID: 65882964743089930}
   m_Layer: 0
   m_Name: Tombstone_2_broken
   m_TagString: Untagged
@@ -35,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1857745870735428}
   m_LocalRotation: {x: -0.5000247, y: -0.49997532, z: -0.49997532, w: 0.5000247}
-  m_LocalPosition: {x: 301.42017, y: 14.97, z: 122.84008}
+  m_LocalPosition: {x: 139.08844, y: 60.007324, z: 12.608887}
   m_LocalScale: {x: 0.610726, y: 0.6107142, z: 0.6107142}
   m_Children: []
   m_Father: {fileID: 0}
@@ -83,3 +84,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1857745870735428}
   m_Mesh: {fileID: 4300000, guid: 46b771855daf97e4aaca4527c6652e6a, type: 3}
+--- !u!65 &65882964743089930
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1857745870735428}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.6891, y: 0.70872116, z: 1.9316554}
+  m_Center: {x: 0.11911145, y: -0.0004634112, z: 0.93205357}

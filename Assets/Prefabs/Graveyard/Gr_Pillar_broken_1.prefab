@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4815558482942656}
   - component: {fileID: 33706154952569502}
   - component: {fileID: 23370592837737466}
+  - component: {fileID: 65895726809812918}
   m_Layer: 0
   m_Name: Gr_Pillar_broken_1
   m_TagString: Untagged
@@ -35,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1001932500588136}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 302.63, y: 14.989, z: 128.75}
+  m_LocalPosition: {x: 137.88805, y: 60.007324, z: 14.651785}
   m_LocalScale: {x: 1.0822974, y: 1.0822974, z: 1.0822974}
   m_Children: []
   m_Father: {fileID: 0}
@@ -83,3 +84,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1001932500588136}
   m_Mesh: {fileID: 4300000, guid: d44bb0b57ed4f5843b60234f4d0adb37, type: 3}
+--- !u!65 &65895726809812918
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1001932500588136}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5705581, y: 0.5705582, z: 1.5353599}
+  m_Center: {x: -0.031279013, y: 0.03127902, z: 0.7676799}

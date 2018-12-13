@@ -10,7 +10,6 @@ public class BossController : MonoBehaviour
 	public UnityEvent SwordHit;
 	Animator anim;
 
-	float lastTime;
 	float attackTimer;
 	bool wait;
 

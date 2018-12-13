@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4998144496847366}
   - component: {fileID: 33001563038073228}
   - component: {fileID: 23287707240190536}
+  - component: {fileID: 65600707270274728}
   m_Layer: 0
   m_Name: Tombstone_1
   m_TagString: Untagged
@@ -35,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1423374179662244}
   m_LocalRotation: {x: -0.5000247, y: -0.49997532, z: -0.49997532, w: 0.5000247}
-  m_LocalPosition: {x: 300.90027, y: 14.963, z: 123.94016}
+  m_LocalPosition: {x: 137.7691, y: 60.007324, z: 12.614952}
   m_LocalScale: {x: 0.610726, y: 0.6107142, z: 0.6107142}
   m_Children: []
   m_Father: {fileID: 0}
@@ -83,3 +84,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1423374179662244}
   m_Mesh: {fileID: 4300000, guid: 10a716c78b62824418aab534ff0ebd7d, type: 3}
+--- !u!65 &65600707270274728
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1423374179662244}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.472384, y: 0.4999919, z: 1.8255097}
+  m_Center: {x: -0.018669426, y: -0.055704325, z: 0.8902336}
