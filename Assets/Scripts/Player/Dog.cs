@@ -8,11 +8,13 @@ namespace David
 		[SerializeField] GameObject player;
 
 		NavMeshAgent agent;
+		Animator animator;
 
 
 		private void Start()
 		{
 			agent = GetComponent<NavMeshAgent>();
+			animator = GetComponent<Animator>();
 		}
 
 		void Update()

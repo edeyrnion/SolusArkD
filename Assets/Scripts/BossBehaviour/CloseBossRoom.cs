@@ -25,6 +25,7 @@ namespace David
 				if (transform.position.y >= endPos)
 				{
 					closing = false;
+					print("test");
 					Destroy(this);
 				}
 			}

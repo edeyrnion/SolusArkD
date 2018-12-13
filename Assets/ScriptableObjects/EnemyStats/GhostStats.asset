@@ -11,4 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbc32bc755dd12444986e5b91d10cf57, type: 3}
   m_Name: GhostStats
   m_EditorClassIdentifier: 
-  Health: 50
+  Health: 10
