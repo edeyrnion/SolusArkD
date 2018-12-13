@@ -68,7 +68,8 @@ public class BanditController : MonoBehaviour
 	{
 		yield return new WaitForSeconds(time);
 		DeathSound.Invoke();
-	}
+        GetComponent<Collider>().enabled = false;
+    }
 
 	public void Move(float speed)
 	{
