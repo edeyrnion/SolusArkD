@@ -48,7 +48,7 @@ namespace David
 				if (Investigated)
 				{
 					float distance = (transform.position - poitOfInvestigation).magnitude;
-					if (distance <= 0.1f)
+					if (distance <= 2f)
 					{
 						if (manager.Detected) { manager.ChangeState(State.Following); }
 						else if (!secondCycle)
@@ -87,7 +87,7 @@ namespace David
 		}
 
 		void Investigate()
-		{
+		{		
 			poitOfInvestigation = targetPos + Random.insideUnitCircle.ToVector3() * investigationOffset;
 			agent.SetDestination(poitOfInvestigation);
 			agent.isStopped = false;

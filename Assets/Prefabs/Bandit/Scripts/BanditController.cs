@@ -6,8 +6,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Animator))]
 public class BanditController : MonoBehaviour
 {
-	[SerializeField] David.WeaponTrigger trigger;
-	public UnityEvent SwordHit;
+	[SerializeField] David.WeaponTrigger trigger;	
 	public UnityEvent DeathSound;
 
 	Animator anim;
@@ -41,8 +40,7 @@ public class BanditController : MonoBehaviour
 						anim.SetTrigger("Attack2");
 					}
 					attackTimer = 0f;
-					wait = true;
-					SwordHit.Invoke();
+					wait = true;					
 					IEnumerator coroutine = Wait(0.5f);
 					StartCoroutine(coroutine);
 				}

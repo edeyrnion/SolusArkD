@@ -25,7 +25,7 @@ namespace David
 		{
 			if (endScreenPanel.activeSelf == true) { return; }
 			int index = SceneManager.GetActiveScene().buildIndex;
-			if (index == 3 && Matthias.CInput.GetButtonDown(Matthias.CButton.Pause))
+			if (index == 2 && Matthias.CInput.GetButtonDown(Matthias.CButton.Pause))
 			{
 				if (manager.GameState == GameState.Game) { manager.ChangeState(GameState.PauseMenu); Cursor.visible = true; }
 				else if (manager.GameState == GameState.PauseMenu) { manager.ChangeState(GameState.Game); Cursor.visible = false; }

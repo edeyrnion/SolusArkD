@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 namespace David
 {
 	public class BossWeaponTrigger : MonoBehaviour
 	{
-		[SerializeField] BossManager manager;	
+		[SerializeField] BossManager manager;
+		public UnityEvent SwordHit;
 
 
 		private void Start()
@@ -16,6 +18,7 @@ namespace David
 		{
 			if (other.gameObject.CompareTag("Player"))
 			{
+				SwordHit.Invoke();
 				manager.DoDamage(manager.Damage);
 				GetComponent<Collider>().enabled = false;
 			}

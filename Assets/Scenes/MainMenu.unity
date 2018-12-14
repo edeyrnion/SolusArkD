@@ -31779,8 +31779,6 @@ GameObject:
   - component: {fileID: 1134019070}
   - component: {fileID: 1134019074}
   - component: {fileID: 1134019073}
-  - component: {fileID: 1134019072}
-  - component: {fileID: 1134019071}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -31802,47 +31800,6 @@ Transform:
   m_Father: {fileID: 749976119}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 111.518005, z: 0}
---- !u!114 &1134019071
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114360344000592908, guid: 087ed67f4052ecd4999ada3bf7b5ffb7,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1134019069}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71ad54847622637419fab8df13ff3331, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 1562588739}
-  targetOffset: {x: 0, y: 1.5, z: 0}
-  collisionLayer:
-    serializedVersion: 2
-    m_Bits: 1024
-  fadeOutLayer:
-    serializedVersion: 2
-    m_Bits: 2048
-  distance: 7.2
-  minAngleX: -45
-  maxAngleX: 65
-  rotationSensivityX: 6
-  rotationSensivityY: 4
-  movementSmooth: 0.3
-  rotationSmooth: 0.3
-  zoomSmooth: 1
---- !u!114 &1134019072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114194377774475442, guid: 087ed67f4052ecd4999ada3bf7b5ffb7,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1134019069}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  profile: {fileID: 11400000, guid: 5f188e0a009c19a4381242ba4e8d2ab7, type: 2}
 --- !u!81 &1134019073
 AudioListener:
   m_ObjectHideFlags: 0
@@ -42161,7 +42118,7 @@ Prefab:
     - target: {fileID: 114237229400241700, guid: c1ce9e66119e39249bda6a1e34b01c95,
         type: 2}
       propertyPath: sceneIndex
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1ce9e66119e39249bda6a1e34b01c95, type: 2}

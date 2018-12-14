@@ -1,13 +1,11 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.Events;
 
 [DisallowMultipleComponent]
 [RequireComponent(typeof(Animator))]
 public class BossController : MonoBehaviour
 {
-	[SerializeField] David.BossWeaponTrigger trigger;
-	public UnityEvent SwordHit;
+	[SerializeField] David.BossWeaponTrigger trigger;	
 	Animator anim;
 
 	float attackTimer;
@@ -58,8 +56,7 @@ public class BossController : MonoBehaviour
 	IEnumerator Wait(float time)
 	{
 		yield return new WaitForSeconds(time);
-		trigger.GetComponent<Collider>().enabled = true;
-		SwordHit.Invoke();
+		trigger.GetComponent<Collider>().enabled = true;		
 		wait = false;
 	}
 

@@ -25,7 +25,7 @@ GameObject:
   m_Name: Cylinder010
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1175147054250618
@@ -42,7 +42,7 @@ GameObject:
   m_Name: Plane001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1245483031254010
@@ -55,9 +55,9 @@ GameObject:
   - component: {fileID: 4219411296411390}
   m_Layer: 0
   m_Name: Zelt
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1313367159576946
@@ -74,7 +74,7 @@ GameObject:
   m_Name: Cylinder008
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1609054135848206
@@ -88,9 +88,9 @@ GameObject:
   - component: {fileID: 65987539921774098}
   m_Layer: 0
   m_Name: GameObject
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1656468954481324
@@ -107,7 +107,7 @@ GameObject:
   m_Name: Cylinder004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1973712477207536
@@ -124,7 +124,7 @@ GameObject:
   m_Name: Cylinder001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4079576475586536
@@ -159,9 +159,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1245483031254010}
-  m_LocalRotation: {x: -0, y: -0.13542455, z: -0, w: 0.9907877}
-  m_LocalPosition: {x: 150.93591, y: 60.007324, z: 15.790192}
-  m_LocalScale: {x: 0.31256863, y: 0.31256863, z: 0.31256863}
+  m_LocalRotation: {x: -0, y: 0.026024623, z: -0, w: 0.9996613}
+  m_LocalPosition: {x: 267.97772, y: 50.028057, z: 406.9577}
+  m_LocalScale: {x: 0.7814215, y: 0.7814216, z: 0.7814215}
   m_Children:
   - {fileID: 4775301255666298}
   - {fileID: 4079576475586536}
@@ -171,7 +171,7 @@ Transform:
   - {fileID: 4090497902474136}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -15.566001, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 2.983, z: 0}
 --- !u!4 &4312739135241718
 Transform:
   m_ObjectHideFlags: 1

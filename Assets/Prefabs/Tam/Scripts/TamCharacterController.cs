@@ -1,14 +1,12 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(CapsuleCollider))]
 [RequireComponent(typeof(Animator))]
 public class TamCharacterController : MonoBehaviour
 {
-	[SerializeField] David.TamWeaponTrigger trigger;
-	public UnityEvent SwordHit;
+	[SerializeField] David.TamWeaponTrigger trigger;	
 
 	[SerializeField] float movingTurnSpeed = 360;
 	[SerializeField] float stationaryTurnSpeed = 180;
@@ -74,8 +72,7 @@ public class TamCharacterController : MonoBehaviour
 	IEnumerator Wait(float time)
 	{
 		yield return new WaitForSeconds(time);
-		trigger.GetComponent<Collider>().enabled = true;
-		SwordHit.Invoke();
+		trigger.GetComponent<Collider>().enabled = true;		
 		wait = false;
 	}
 
