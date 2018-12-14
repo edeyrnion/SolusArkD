@@ -12,6 +12,7 @@ namespace David
 			if (other.gameObject.CompareTag("Player"))
 			{
 				triggerEvent.Raise();
+				Destroy(this);
 			}
 		}
 	}
