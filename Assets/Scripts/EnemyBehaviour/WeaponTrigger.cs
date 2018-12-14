@@ -18,6 +18,7 @@ namespace David
 		{
 			if (other.gameObject.CompareTag("Player"))
 			{
+				print("hit");
 				SwordHit.Invoke();
 				manager.DealDamage(manager.Damage);
 				GetComponent<Collider>().enabled = false;
