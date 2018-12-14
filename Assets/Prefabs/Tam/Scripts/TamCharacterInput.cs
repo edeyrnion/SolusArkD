@@ -52,7 +52,7 @@ public class TamCharacterInput : MonoBehaviour
             lastTime = currentTime;
             if (atk)
             {
-                Debug.Log("Attack");
+                //Debug.Log("Attack");
                 character.Attack();
                 atk = false;
             }

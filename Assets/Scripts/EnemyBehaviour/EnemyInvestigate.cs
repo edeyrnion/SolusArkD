@@ -21,7 +21,7 @@ namespace David
 
 		public void OnStateEnter()
 		{
-			print(manager.CurrentState);
+			//print(manager.CurrentState);
 			agent.velocity = Vector3.zero;
 			agent.isStopped = true;
 			LookingAtTarget = false;
@@ -96,7 +96,7 @@ namespace David
 
 		IEnumerator Wait(float waitTime, string test)
 		{
-			print(test);
+			//print(test);
 			if (distanceToPlayer <= manager.DetectionRadius)
 			{
 				manager.ChangeState(State.Following);

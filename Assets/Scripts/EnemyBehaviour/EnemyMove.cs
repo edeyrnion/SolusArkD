@@ -21,7 +21,7 @@ namespace David
 
 		public void OnStateEnter()
 		{
-			print(manager.CurrentState);
+			//print(manager.CurrentState);
 			agent.speed = manager.Stats.WalkingSpeed;
 			LookingAtTarget = false;
 			IsMoving = false;

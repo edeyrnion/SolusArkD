@@ -4,12 +4,12 @@
 [RequireComponent(typeof(Animator))]
 public class BossGhostController : MonoBehaviour
 {
-    Animator anim;
+    //Animator anim;
 
-    float lastTime;
+    //float lastTime;
 
-    private void Awake()
-    {
-        anim = GetComponent<Animator>();
-    }
+    //private void Awake()
+    //{
+    //    anim = GetComponent<Animator>();
+    //}
 }
