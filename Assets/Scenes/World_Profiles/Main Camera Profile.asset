@@ -37,7 +37,7 @@ MonoBehaviour:
     value: 5
   threshold:
     overrideState: 1
-    value: 0.35
+    value: 0.6
   softKnee:
     overrideState: 0
     value: 0.5
@@ -46,7 +46,7 @@ MonoBehaviour:
     value: 65472
   diffusion:
     overrideState: 1
-    value: 7
+    value: 5
   anamorphicRatio:
     overrideState: 0
     value: 0
@@ -170,11 +170,11 @@ MonoBehaviour:
     overrideState: 1
     value: 1
   shutterAngle:
-    overrideState: 0
-    value: 270
+    overrideState: 1
+    value: 91
   sampleCount:
-    overrideState: 0
-    value: 10
+    overrideState: 1
+    value: 4
 --- !u!114 &114894812471631564
 MonoBehaviour:
   m_ObjectHideFlags: 3
