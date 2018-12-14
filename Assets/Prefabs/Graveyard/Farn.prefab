@@ -21,13 +21,12 @@ GameObject:
   - component: {fileID: 4334256067928026}
   - component: {fileID: 33950809286037632}
   - component: {fileID: 23140507333571136}
-  - component: {fileID: 95186140891748990}
   m_Layer: 0
   m_Name: Farn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4334256067928026
 Transform:
@@ -57,7 +56,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 5b14af6a12b07e44d8e9d71c71f85a83, type: 2}
+  - {fileID: 2100000, guid: 824df618c080c9448b73e6e81e7a9d90, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84,21 +83,3 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1067660049349184}
   m_Mesh: {fileID: 4300000, guid: 84e67fd991d50254e9f7d632144a1f8e, type: 3}
---- !u!95 &95186140891748990
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1067660049349184}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 84e67fd991d50254e9f7d632144a1f8e, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0

@@ -1439,7 +1439,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1952622848006510}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -259.506, y: 0, z: 54.337494}
+  m_LocalPosition: {x: 8.533218, y: -4.6973267, z: 99.56595}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4265996978809866}
@@ -2132,7 +2132,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 801824e99700002499c9144d66aeaaa2, type: 3}
+  - {fileID: 2100000, guid: a5a8b1ec8cdd55d4ebae4ad9fe1ca322, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2219,7 +2219,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 114701432772567796}
-  banditController: {fileID: 114864666848905630}
 --- !u!114 &114456336793034246
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2247,7 +2246,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Stats: {fileID: 11400000, guid: f3fb7f664edb5524897b4fc201828819, type: 2}
   CurrentState: 0
-  BanditController: {fileID: 0}
+  BanditController: {fileID: 114864666848905630}
   Player: {fileID: 0}
   Color: {r: 0, g: 1, b: 0, a: 1}
   Health: 10
