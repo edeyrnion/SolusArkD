@@ -2024,6 +2024,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 114847882191236918}
+  SwordHit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114847882191236918
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2051,37 +2056,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trigger: {fileID: 114463304037704624}
-  SwordHit:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: 800c4525f7c2e2249aa3aef1b22cff0b, type: 2}
-        m_MethodName: Raise
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   movingTurnSpeed: 720
   stationaryTurnSpeed: 360
-  jumpPower: 9
+  jumpPower: 10
   gravityMultiplier: 2
   runCycleLegOffset: 0.2
   moveSpeedMultiplier: 1
   animSpeedMultiplier: 1
-  groundCheckDistance: 0.3
+  groundCheckDistance: 0.5
 --- !u!136 &136823340075922338
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1044170382040410}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: dc1a60f7a237a93419f67223f664e0ca, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.7
