@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Matthias;
 
 namespace David
 {
@@ -29,7 +30,7 @@ namespace David
 
 		private void Update()
 		{
-			if (Input.GetKeyDown(KeyCode.F))
+			if (CInput.GetButtonDown(CButton.ToggleLight))
 			{
 				if (!isActive)
 				{
