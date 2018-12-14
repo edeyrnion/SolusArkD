@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Matthias
 {
@@ -41,17 +42,21 @@ namespace Matthias
             return false;
         }
 
-        public Renderer[] ClipPlaneCastAll(Vector3 from, Quaternion orientation, float maxDistance, int layerMask = ~0)
+        public List<Renderer> ClipPlaneCastAll(Vector3 from, Quaternion orientation, float maxDistance, int layerMask = ~0)
         {
             var direction = orientation * -Vector3.forward;
 
             RaycastHit[] hitinfos = Physics.BoxCastAll(from, halfExtends, direction, orientation, maxDistance - ncpDistance, layerMask);
 
-            Renderer[] renderers = new Renderer[hitinfos.Length];
+            List<Renderer> renderers = new List<Renderer>();
 
             for (int i = 0; i < hitinfos.Length; i++)
             {
-                renderers[i] = hitinfos[i].collider.GetComponent<Renderer>();
+                var a = hitinfos[i].collider.GetComponentsInChildren<Renderer>();
+                if (a.Length > 0)
+                {
+                    renderers.AddRange(a);
+                }
             }
 
             return renderers;
