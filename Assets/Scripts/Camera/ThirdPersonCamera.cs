@@ -154,12 +154,12 @@ namespace Matthias
 			}
 		}
 
-		private void OnGUI()
-		{
-			GUI.Label(new Rect(10, 10, 200, 20), "Objects fading out: " + obstacleFade.FadeOut.Count.ToString());
-			GUI.Label(new Rect(10, 30, 200, 20), "Objects fading in: " + obstacleFade.FadeIn.Count.ToString());
-			GUI.Label(new Rect(10, 50, 200, 20), "Collision Distance: " + adjustedDistance.ToString());
-		}
+		//private void OnGUI()
+		//{
+		//	GUI.Label(new Rect(10, 10, 200, 20), "Objects fading out: " + obstacleFade.FadeOut.Count.ToString());
+		//	GUI.Label(new Rect(10, 30, 200, 20), "Objects fading in: " + obstacleFade.FadeIn.Count.ToString());
+		//	GUI.Label(new Rect(10, 50, 200, 20), "Collision Distance: " + adjustedDistance.ToString());
+		//}
 
 		private void ControllRotation(float axisX, float axisY)
 		{
