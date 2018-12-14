@@ -37,7 +37,6 @@ GameObject:
   - component: {fileID: 4280008696813962}
   - component: {fileID: 95276640908610896}
   - component: {fileID: 136369074835403126}
-  - component: {fileID: 114441335265346758}
   m_Layer: 0
   m_Name: Bones
   m_TagString: Untagged
@@ -90,17 +89,6 @@ Animator:
   m_HasTransformHierarchy: 0
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114441335265346758
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1948113505024190}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5cabbfe034a88e4e8ff5f5904996369, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!136 &136369074835403126
 CapsuleCollider:
   m_ObjectHideFlags: 1

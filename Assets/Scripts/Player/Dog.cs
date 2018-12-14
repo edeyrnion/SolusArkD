@@ -19,7 +19,8 @@ namespace David
 
 		void Update()
 		{
-			agent.SetDestination(player.transform.position);			
+			agent.SetDestination(player.transform.position);
+            animator.SetFloat("Speed", agent.velocity.magnitude);
 		}
 	}
 }
